@@ -101,11 +101,7 @@ class DITICConfig:
             'deleted',
         ]
         self.system = {
-<<<<<<< HEAD
             'working_dir': '/home/pedro/kLeI/ES/Project/ES-Project/dashboard/ditic_kanban/',
-=======
-            'working_dir': '/home/godinho/Documents/ES-Git/ES-Project/dashboard/ditic_kanban/',
->>>>>>> 5565f1f201c37ccb5e3d16747e37e5915b750cdd
             'summary_file': 'summary',
             'server': 'localhost:4200',
             'username': 'root',
