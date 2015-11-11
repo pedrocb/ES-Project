@@ -1,4 +1,4 @@
-#!/home/godinho/Documents/RTdashboard-source/dashboard/env/bin/python
+#!/home/godinho/Documents/ES-Git/ES-Project/dashboard/env/bin/python
 # EASY-INSTALL-ENTRY-SCRIPT: 'ditic-kanban==0.1','console_scripts','ditic_kanban_server'
 __requires__ = 'ditic-kanban==0.1'
 import sys

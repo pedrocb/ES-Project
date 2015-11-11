@@ -32,7 +32,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/godinho/Documents/RTdashboard-source/dashboard/env"
+set -gx VIRTUAL_ENV "/home/godinho/Documents/ES-Git/ES-Project/dashboard/env"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
