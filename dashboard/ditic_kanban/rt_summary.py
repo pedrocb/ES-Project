@@ -161,6 +161,7 @@ def generate_summary_file():
 
 
 def get_summary_info():
+
     """
     returns a dictionary with the following format
         {

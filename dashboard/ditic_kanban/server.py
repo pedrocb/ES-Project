@@ -50,7 +50,7 @@ print STATIC_PATH
 def create_default_result():
     # Default header configuration
     result = {
-        'title': 'Dashboard'
+        'title': 'Dashboarda'
     }
 
     call(['update_statistics'])
