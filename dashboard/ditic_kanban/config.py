@@ -41,7 +41,7 @@ class DITICConfig:
         """
         self.email_to_user = {
             'vapi@uc.pt': 'Vapi',
-            'asantos@uc.pt': 'Alex',
+            'root': 'root',
             'aimf@student.dei.uc.pt':'Inês',
             'cadp@student.dei.uc.pt':'Cátia',
             'silveiro@student.dei.uc.pt':'Hugo',
@@ -54,12 +54,12 @@ class DITICConfig:
             'vapi@uc.pt': {
                 'new': 7,
                 'open': 2,
-                'resolved': 20,
+                'resolved': 10,
             },
-            'asantos@uc.pt': {
-                'new': 6,
+            'root': {
+                'new': 7,
                 'open': 2,
-                'resolved': 6,
+                'resolved': 10,
             },
             'aimf@student.dei.uc.pt': {
                 'new': 5,

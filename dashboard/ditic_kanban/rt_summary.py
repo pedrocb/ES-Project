@@ -60,7 +60,7 @@ def __generate_summary_file(rt_object, list_emails, list_status):
 
     # Get the information from the server.
     try:
-        response = get_list_of_tickets(rt_object, r'Queue = "general" AND ( resolved > "%s" '
+        response = get_list_of_tickets(rt_object, r'Queue = "general" AND ( Resolved > "%s" '
                                                   r'OR ( Status != "resolved" '
                                                   r'AND Status != "deleted" ) ) %s' % (previous_date, email_query))
     except ValueError as e:
@@ -121,7 +121,7 @@ def __generate_summary_file(rt_object, list_emails, list_status):
                 summary['dir'][status] += len(group_by_cf.get('dir', ''))
                 summary['dir-inbox'][status] += len(group_by_cf.get('dir-inbox', ''))
             else:
-            	print("email: ", email, "|", "Status: ", status, "| terceiro: ", len(group_by_status[status]))
+            	#print("email: ", email, "|", "Status: ", status, "| terceiro: ", len(group_by_status[status]))
                 summary[email][status] += len(group_by_status[status])
 
     return summary

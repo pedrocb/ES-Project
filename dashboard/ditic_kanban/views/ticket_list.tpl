@@ -40,27 +40,27 @@
                         % end
                     </td>
                     <td>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                             {{ticket['id']}}
                         </a>
                     </td>
                     <td>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                             {{ticket['status']}}
                         </a>
                     </td>
                     <td>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                             {{ticket['cf.{servico}']}}
                         </a>
                     </td>
                     <td>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                             {{ticket['requestors']}}
                         </a>
                     </td>
                     <td>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                             % subject = ticket['subject']
                             % if len(ticket['subject']) > max_len:
                             %   subject = ticket['subject'][:max_len]+'...'
@@ -69,7 +69,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                             Created: {{ticket['created']}}<br>
                             Last Update: {{ticket['lastupdated']}}
                         </a>
