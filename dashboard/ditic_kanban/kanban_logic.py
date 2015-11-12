@@ -72,7 +72,7 @@ def create_ticket_possible_actions(config, ticket, email, number_tickets_per_sta
             actions['back'] = True
 
         # Can we move forward?
-        status = 'rejected'
+        status = 'resolved'
         if status in email_limit and status in number_tickets_per_status:
             if number_tickets_per_status[status] < email_limit[status]:
                 actions['forward'] = True
@@ -93,7 +93,7 @@ def create_ticket_possible_actions(config, ticket, email, number_tickets_per_sta
             actions['back'] = True
 
     # Ready to RT actions
-    elif ticket['status'] == 'rejected':
+    elif ticket['status'] == 'resolved':
         actions['increase_priority'] = True
         actions['decrease_priority'] = True
 

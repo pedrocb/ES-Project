@@ -60,7 +60,7 @@ def __generate_summary_file(rt_object, list_emails, list_status):
 
     # Get the information from the server.
     try:
-        response = get_list_of_tickets(rt_object, r'Queue = "general" AND ( Resolved > "%s" '
+        response = get_list_of_tickets(rt_object, r'Queue = "general" AND ( resolved > "%s" '
                                                   r'OR ( Status != "resolved" '
                                                   r'AND Status != "deleted" ) ) %s' % (previous_date, email_query))
     except ValueError as e:
@@ -68,7 +68,7 @@ def __generate_summary_file(rt_object, list_emails, list_status):
 
     # Second step: search for all tickets of DIR and DIR-INBOX
     try:
-        response += get_list_of_tickets(rt_object, r'Queue = "general" AND ( "CF.{IS - Informatica e Sistemas}" = "DIR"'
+        response += get_list_of_tickets(rt_object, r'Queue = "general" AND ( "CF.{IS - Informatica e Sistemas}" = "DIR" '
                                                    r'OR "CF.{IS - Informatica e Sistemas}" = "DIR-INBOX" )'
                                                    r'AND Owner = "nobody" AND Status != "resolved" '
                                                    r'AND Status != "deleted" ')
@@ -121,6 +121,7 @@ def __generate_summary_file(rt_object, list_emails, list_status):
                 summary['dir'][status] += len(group_by_cf.get('dir', ''))
                 summary['dir-inbox'][status] += len(group_by_cf.get('dir-inbox', ''))
             else:
+            	print("email: ", email, "|", "Status: ", status, "| terceiro: ", len(group_by_status[status]))
                 summary[email][status] += len(group_by_status[status])
 
     return summary
@@ -162,6 +163,7 @@ def generate_summary_file():
 
 def get_summary_info():
 
+
     """
     returns a dictionary with the following format
         {
@@ -187,6 +189,7 @@ def get_summary_info():
     # Let use system config list
     system = config.get_system()
 
+    
     # Get the file information
     try:
         with open(summary_filename(system['working_dir'], system['summary_file']), 'r') as file_handler:

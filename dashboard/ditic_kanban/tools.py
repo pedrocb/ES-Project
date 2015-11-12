@@ -238,7 +238,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                     'status': 'new'
                 }
             )
-        elif ticket_line['status'] == 'rejected':
+        elif ticket_line['status'] == 'resolved':
             result = modify_ticket(
                 rt_object,
                 ticket_id,
@@ -283,7 +283,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'timeworked': calculate_time_worked(ticket_line) + ' minutes',
                     'starts': '0',
-                    'status': 'rejected',
+                    'status': 'resolved',
                 }
             )
 

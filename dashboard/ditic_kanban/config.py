@@ -54,50 +54,50 @@ class DITICConfig:
             'vapi@uc.pt': {
                 'new': 7,
                 'open': 2,
-                'rejected': 10,
+                'resolved': 20,
             },
             'asantos@uc.pt': {
                 'new': 6,
                 'open': 2,
-                'rejected': 6,
+                'resolved': 6,
             },
             'aimf@student.dei.uc.pt': {
                 'new': 5,
                 'open': 2,
-                'rejected': 5,
+                'resolved': 5,
             },
             'cadp@student.dei.uc.pt': {
                 'new': 14,
                 'open': 2,
-                'rejected': 14,
+                'resolved': 14,
             },
             'silveiro@student.dei.uc.pt': {
                 'new': 5,
                 'open': 3,
-                'rejected': 5,
+                'resolved': 5,
             },
             'jgodinho@student.dei.uc.pt': {
                 'new': 5,
                 'open': 1,
-                'rejected': 5,
+                'resolved': 5,
             },
             'pbelem@student.dei.uc.pt': {
                 'new': 7,
                 'open': 3,
-                'rejected': 7,
+                'resolved': 7,
             },
             'rmcf@student.dei.uc.pt': {
                 'new': 8,
                 'open': 3,
-                'rejected': 8,
+                'resolved': 8,
             },
         }
         self.list_status = [
             'new',
             'open',
             'stalled',
-            'rejected',
             'resolved',
+            'rejected',
             'deleted',
         ]
         self.system = {

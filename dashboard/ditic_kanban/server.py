@@ -50,7 +50,7 @@ print STATIC_PATH
 def create_default_result():
     # Default header configuration
     result = {
-        'title': 'Dashboarda'
+        'title': 'Dashboard'
     }
 
     call(['update_statistics'])
@@ -251,3 +251,7 @@ def static(filepath):
 
 def start_server():
     run(server="paste",host='0.0.0.0',port=8080, debug=False, interval=1, reloader=True, quiet=False)
+
+
+if __name__ == '__main__':
+    start_server()
