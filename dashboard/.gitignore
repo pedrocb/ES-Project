@@ -1,5 +1,4 @@
 /ditic_kanban.egg-info
-/ditic_kanban/config.py
 /env
 /*.pyc
 
@@ -15,6 +14,7 @@
 # .idea/workspace.xml
 # .idea/tasks.xml
 # .idea/dictionaries
+/ditic_kanban/config.py
 # .idea/shelf
 
 # Sensitive or high-churn files:
