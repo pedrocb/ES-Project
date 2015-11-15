@@ -64,7 +64,9 @@ def __generate_summary_file(rt_object, list_emails, list_status):
                                                   r'OR ( Status != "resolved" '
                                                   r'AND Status != "deleted" ) ) %s' % (previous_date, email_query))
     except ValueError as e:
-        raise ValueError('Error1:' + str(e))
+        response = []
+        if str(e) != 'no matching results.':
+            raise ValueError('Error:3' + str(e))
 
     # Second step: search for all tickets of DIR and DIR-INBOX
     try:
