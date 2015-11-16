@@ -94,8 +94,8 @@ def create_ticket_possible_actions(config, ticket, email, number_tickets_per_sta
 
     # Ready to RT actions
     elif ticket['status'] == 'resolved':
-        actions['increase_priority'] = True
-        actions['decrease_priority'] = True
+        actions['increase_priority'] = False
+        actions['decrease_priority'] = False
 
         # Can we move back?
         status = 'open'
