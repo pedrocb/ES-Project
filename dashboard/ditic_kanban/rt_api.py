@@ -63,6 +63,8 @@ class RTApi:
             raise ValueError('Not able to contact server!')
 
 
+
+
 def get_list_of_tickets(rt_object, query, detail=True):
     """
     Get a full list of all tickets, and its information, based on the query.
@@ -130,6 +132,7 @@ def get_list_of_tickets(rt_object, query, detail=True):
             )
 
     return result
+
 
 
 def modify_ticket(rt_object, ticket_id, new_values):
