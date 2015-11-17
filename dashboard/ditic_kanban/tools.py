@@ -74,17 +74,17 @@ def user_tickets_details(rt_object, email):
     # If the user is dir, then build the search
     if email == 'dir':
         query = 'Queue = "general" AND "CF.{IS - Informatica e Sistemas}" = "DIR" AND Owner = "Nobody"  AND ' \
-                'Status != "resolved" AND Status != "deleted" '
+                'Status != "deleted" '
 
     # If the user is dir-inbox, then search for it
     elif email == 'dir-inbox':
         query = 'Queue = "general" AND "CF.{IS - Informatica e Sistemas}" = "DIR-INBOX" AND Owner = "Nobody"  AND ' \
-                'Status != "resolved" AND Status != "deleted" '
+                'Status != "deleted" '
 
     # If the user is unknown, then search all users but those that we already know
     elif email == 'unknown':
         query = 'Queue = "general" AND "CF.{IS - Informatica e Sistemas}" LIKE "DIR%"  AND ' \
-                'Status != "resolved" AND Status != "deleted" '
+                'Status != "deleted" '
         for user in config.get_email_to_user().keys():
             query += 'AND Owner != "'+user+'" '
         query += 'AND Owner != "Nobody"'
@@ -95,7 +95,7 @@ def user_tickets_details(rt_object, email):
 
     # Ok, if we got here, then the user exist
     else:
-        query += 'AND  ( Status != "resolved" AND Status != "deleted" )'
+        query += ' AND Status != "deleted" '
 
     # Get the information from the server.
     try:
@@ -371,8 +371,7 @@ def user_closed_tickets(rt_object, email):
     previous_date = (date.today() - timedelta(60)).isoformat()
 
     # The search string
-    query = 'Owner = "%s" AND Queue = "general" AND  Status = "resolved" AND LastUpdated > "%s"' % (email,
-                                                                                                    previous_date)
+    query = 'Owner = "%s" AND Queue = "general" AND LastUpdated > "%s"' % (email, previous_date)
 
     # Get the information from the server.
     try:
