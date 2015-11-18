@@ -123,7 +123,7 @@
                       <audio autoplay="autoplay">
                          <source src="/static/alert1.mp3" />
                       </audio>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket_info['id']}}">
+                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket_info['id']}}" target="_blank">
                             {{ticket_info['subject']}}
                         </a>
                         % if username:
@@ -143,10 +143,9 @@
                     <td align="center">IN</td>
                     <td align="center">ACTIVE</td>
                     <td align="center">STALLED</td>
-                    <td align="center">R2RT</td>
                     <td align="center">DONE</td>
                 </tr>
-                % totals = { status: 0 for status in ['new', 'open', 'stalled', 'rejected', 'resolved']}
+                % totals = { status: 0 for status in ['new', 'open', 'stalled', 'resolved']}
                 % for email in sorted(summary):
                 %   if email.startswith('dir'):
                 %       continue
@@ -157,7 +156,7 @@
                 %   end
                 <tr>
                     <td><a href="/detail/{{email}}?o={{username_id}}">{{user}}</a></td>
-                    %   for status in ['new', 'open', 'stalled', 'rejected', 'resolved']:
+                    %   for status in ['new', 'open', 'stalled', 'resolved']:
                     <td>{{summary[email][status]}}</td>
                     %       totals[status] += summary[email][status]
                     % end
@@ -165,7 +164,7 @@
                 % end
                 <tr>
                     <td><strong>Totais</strong></td>
-                    %   for status in ['new', 'open', 'stalled', 'rejected', 'resolved']:
+                    %   for status in ['new', 'open', 'stalled', 'resolved']:
                     <td><strong>{{totals[status]}}</strong></td>
                     % end
                 </tr>
@@ -183,4 +182,9 @@
     </td>
 </table>
 
-
+<!-- Form to create a ticket -->
+<form action="/ticket/new?o={{username_id}}" method="post">
+  Subject: <input name="subject" type="text"> <br/>
+  Description: <input name="description" style="width: 200px; height:100px;" type="text">
+  <input type="submit" value="Create Ticket">
+</form>

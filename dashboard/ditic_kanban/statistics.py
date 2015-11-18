@@ -223,7 +223,7 @@ def full_list_of_tickets_on_a_date(rt_object, config, tickets_date):
     query = '''
             (("CF.{IS - Informatica e Sistemas}" = "DIR" OR "CF.{IS - Informatica e Sistemas}" = "DIR-INBOX")
              AND Owner = "nobody"
-             AND (LastUpdated = "%s" OR Status = "new" OR Status = "open" OR Status = "stalled" OR Status = "rejected"))
+             AND (LastUpdated = "%s" OR Status = "new" OR Status = "open" OR Status = "stalled" OR Status = "resolved"))
     ''' % tickets_date
     list_of_tickets = stats_search_tickets(rt_object, query)
 
@@ -232,7 +232,7 @@ def full_list_of_tickets_on_a_date(rt_object, config, tickets_date):
                 ( owner = "%s"
                 AND (LastUpdated = "%s" OR Status = "new"
                      OR Status = "open" OR Status = "stalled"
-                     OR Status = "rejected"))
+                     OR Status = "resolved"))
         ''' % (email, tickets_date)
         list_of_tickets += stats_search_tickets(rt_object, query)
 

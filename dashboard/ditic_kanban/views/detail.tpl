@@ -40,8 +40,8 @@
         </td>
         <td align="center"><strong>STALLED</strong></td>
         <td align="center">
-            <strong>Ready to RT</strong><br>
-            % status = 'rejected'
+            <strong>DONE</strong><br>
+            % status = 'resolved'
             % if status in number_tickets_per_status:
                 <strong>{{number_tickets_per_status[status]}}</strong>
             % end
@@ -51,7 +51,7 @@
         </td>
     </tr>
     <tr>
-        % for status in ['new', 'open', 'stalled', 'rejected']:
+        % for status in ['new', 'open', 'stalled', 'resolved']:
         %   if status not in tickets.keys():
         <td></td>
         %       continue
@@ -79,7 +79,7 @@ TimeWorked: {{ticket['timeworked']}}
 
 
 Requestor: {{ticket['requestors']}}
-Subject: {{ticket['subject']}}" href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}">
+Subject: {{ticket['subject']}}" href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
                 {{ticket['id']}}
                 % subject = ticket['subject']
                 % if len(ticket['subject']) > max_len:

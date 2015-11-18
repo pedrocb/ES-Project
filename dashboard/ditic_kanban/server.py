@@ -109,6 +109,29 @@ def auth():
         result.update({'message': 'Mandatory fields'})
         return template('auth', result)
 
+@post('/ticket/new')
+def create_ticket():
+    if not request.query.o:
+        redirect("/detail/"+emailGlobal+"?o="+request.query.o)
+    else:
+        print request.forms.get('description')
+        create_ticket = {
+            'id' : 'ticket/new',
+            'Owner' : 'nobody',
+            'Text' : request.forms.get('description'),
+            'Subject' : request.forms.get('subject'),
+            'Queue' : 'General',
+            'CF-IS - Informatica e Sistemas' : 'DIR',
+        }
+        content = ''
+        for key in create_ticket:
+            content += '{0}: {1}\n'.format(key,create_ticket[key])
+
+        query = {
+            'content':content
+        }
+        rt_object.get_data_from_rest('ticket/new',query)
+        redirect('/?o=%s' % request.query.o)
 
 @get('/detail/<email>')
 def email_detail(email):
@@ -166,6 +189,8 @@ def email_detail(email):
     result.update({'summary:':get_summary_info()})
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
     return template('ticket_list', result)
+
+
 
 
 @post('/search')
@@ -251,3 +276,7 @@ def static(filepath):
 
 def start_server():
     run(server="paste",host='0.0.0.0',port=8080, debug=False, interval=1, reloader=True, quiet=False)
+
+
+if __name__ == '__main__':
+    start_server()
