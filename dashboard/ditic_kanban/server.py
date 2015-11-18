@@ -28,6 +28,7 @@ from ditic_kanban.rt_api import RTApi
 from ditic_kanban.statistics import get_date
 from ditic_kanban.statistics import get_statistics
 from subprocess import call
+
 emailGlobal = ''
 
 # My first global variable...
@@ -41,8 +42,6 @@ rt_object = RTApi(system['server'], system['username'], system['password'])
 # This part is necessary in order to get access to sound files
 # Static dir is in the parent directory
 STATIC_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../static"))
-
-
 
 print STATIC_PATH
 
@@ -73,10 +72,10 @@ def get_root():
 
     result = create_default_result()
     # Removed to be a display at the TV
-    #if request.query.o == '' or not user_auth.check_id(request.query.o):
+    # if request.query.o == '' or not user_auth.check_id(request.query.o):
     #    result.update({'message': ''})
     #    return template('auth', result)
-    #result.update({'username': user_auth.get_email_from_id(request.query.o)})
+    # result.update({'username': user_auth.get_email_from_id(request.query.o)})
     result.update({'username_id': request.query.o})
     today = date.today().isoformat()
     result.update({'statistics': get_statistics(get_date(30, today), today)})
@@ -86,7 +85,7 @@ def get_root():
 
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
 
-    result.update({'summary:':get_summary_info()})
+    result.update({'summary:': get_summary_info()})
 
     return template('entrance_summary', result)
 
@@ -109,37 +108,41 @@ def auth():
         result.update({'message': 'Mandatory fields'})
         return template('auth', result)
 
+
 @post('/ticket/new')
 def create_ticket():
+    print "create ticket: ", request.query.o
     if not request.query.o:
-        redirect("/detail/"+emailGlobal+"?o="+request.query.o)
+        redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
     else:
         create_ticket = {
-            'id' : 'ticket/new',
-            'Owner' : 'nobody',
-            'Text' : request.forms.get('description'),
-            'Subject' : request.forms.get('subject'),
-            'Queue' : 'General',
-            'CF-IS - Informatica e Sistemas' : 'DIR',
+            'id': 'ticket/new',
+            'Owner': 'nobody',
+            'Text': request.forms.get('description'),
+            'Subject': request.forms.get('subject'),
+            'Queue': 'General',
+            'CF-IS - Informatica e Sistemas': 'DIR',
         }
         content = ''
         for key in create_ticket:
-            content += '{0}: {1}\n'.format(key,create_ticket[key])
+            content += '{0}: {1}\n'.format(key, create_ticket[key])
 
         query = {
-            'content':content
+            'content': content
         }
-        rt_object.get_data_from_rest('ticket/new',query)
-        print query
+        rt_object.get_data_from_rest('ticket/new', query)
         redirect('/?o=%s' % request.query.o)
+
 
 @post('/ticket/<ticket_id>/comment')
 def ticket_comment(ticket_id):
-
+    if not request.query.o:
+        redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
+    else:
         comment = {
-            'id' : ticket_id,
-            'Action' : 'comment',
-            'Text'   : request.forms.get('comment'),
+            'id': ticket_id,
+            'Action': 'comment',
+            'Text': request.forms.get('comment'),
         }
 
         content = ''
@@ -148,10 +151,10 @@ def ticket_comment(ticket_id):
             content += '{0}: {1}\n'.format(key, comment[key])
 
         query = {
-            'content':content
+            'content': content
         }
-        rt_object.get_data_from_rest('ticket/'+ticket_id+'/comment',query)
 
+        rt_object.get_data_from_rest('ticket/' + ticket_id + '/comment', query)
         ticket_action(ticket_id, 'forward')
 
 
@@ -181,7 +184,7 @@ def email_detail(email):
 
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
 
-    result.update({'summary:':get_summary_info()})
+    result.update({'summary:': get_summary_info()})
     if email == 'dir' or email == 'dir-inbox' or email == 'unknown':
         return template('ticket_list', result)
     else:
@@ -208,11 +211,9 @@ def email_detail(email):
 
     # Is there any URGENT ticket?
     result.update({'urgent': get_urgent_tickets(rt_object)})
-    result.update({'summary:':get_summary_info()})
+    result.update({'summary:': get_summary_info()})
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
     return template('ticket_list', result)
-
-
 
 
 @post('/search')
@@ -239,22 +240,21 @@ def search():
 
     # Is there any URGENT ticket?
     result.update({'urgent': get_urgent_tickets(rt_object)})
-    result.update({'summary:':get_summary_info()})
+    result.update({'summary:': get_summary_info()})
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
     return template('search', result)
 
 
 @route('/ticket/<ticket_id>/action/<action>')
 def ticket_action(ticket_id, action):
-
-    global emailGlobal
     ticket_action_aux(ticket_id, action)
-    redirect("/detail/"+emailGlobal+"?o="+request.query.o)
+    redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
 
 
 def ticket_action_aux(ticket_id, action):
     start_time = time()
 
+    print request.query.o, " ", user_auth.check_id((request.query.o))
     result = create_default_result()
     if request.query.o == '' or not user_auth.check_id(request.query.o):
         result.update({'message': ''})
@@ -284,11 +284,13 @@ def ticket_action_aux(ticket_id, action):
     result.update({'urgent': get_urgent_tickets(rt_object)})
 
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
-    result.update({'summary:':get_summary_info()})
+    result.update({'summary:': get_summary_info()})
+
     if request.query.email == 'dir' or request.query.email == 'dir-inbox' or request.query.email == 'unknown':
         return template('ticket_list', result)
     else:
         return template('detail', result)
+
 
 @route("/static/<filepath:path>")
 def static(filepath):
@@ -296,7 +298,7 @@ def static(filepath):
 
 
 def start_server():
-    run(server="paste",host='0.0.0.0',port=8080, debug=False, interval=1, reloader=True, quiet=False)
+    run(server="paste", host='0.0.0.0', port=8080, debug=False, interval=1, reloader=True, quiet=False)
 
 
 if __name__ == '__main__':
