@@ -42,7 +42,7 @@ rt_object = RTApi(system['server'], system['username'], system['password'])
 # Static dir is in the parent directory
 STATIC_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../static"))
 
-
+global aux
 
 print STATIC_PATH
 
@@ -114,7 +114,6 @@ def create_ticket():
     if not request.query.o:
         redirect("/detail/"+emailGlobal+"?o="+request.query.o)
     else:
-        print request.forms.get('description')
         create_ticket = {
             'id' : 'ticket/new',
             'Owner' : 'nobody',
@@ -131,7 +130,36 @@ def create_ticket():
             'content':content
         }
         rt_object.get_data_from_rest('ticket/new',query)
+        print query
         redirect('/?o=%s' % request.query.o)
+
+@post('/ticket/<ticket_id>/comment')
+def ticket_comment(ticket_id):
+        comment = {
+            'id' : ticket_id,
+            'Action' : 'comment',
+            'Text'   : request.forms.get('comment'),
+        }
+
+        content = ''
+
+        for key in comment:
+            content += '{0}: {1}\n'.format(key, comment[key])
+
+        query = {
+            'content':content
+        }
+
+        rt_object.get_data_from_rest('ticket/'+ticket_id+'/comment',query)
+        print comment
+        print request.query.o
+        #print aux
+        ticket_action(ticket_id, "forward")
+        redirect('/detail/'+user_auth.get_email_from_id(aux)+'?o='+aux)
+
+
+
+
 
 @get('/detail/<email>')
 def email_detail(email):
@@ -224,12 +252,16 @@ def search():
 
 @route('/ticket/<ticket_id>/action/<action>')
 def ticket_action(ticket_id, action):
-
+    global aux
+    print "ticket_action"
+    print ticket_id
+    print action
     global emailGlobal
     ticket_action_aux(ticket_id, action)
-    redirect("/detail/"+emailGlobal+"?o="+request.query.o)
+    print request.query.o
+    aux = request.query.o
+    redirect("/detail/"+emailGlobal+"?o="+aux)
 
-#mudou-se (redirect)
 
 def ticket_action_aux(ticket_id, action):
     start_time = time()

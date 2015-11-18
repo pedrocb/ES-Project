@@ -49,6 +49,9 @@
             % end
             {{sum}}
         </td>
+
+
+
         <td>
             <table border="1">
                 <tr>
@@ -77,3 +80,4 @@
         </td>
     </tr>
 </table>
+
