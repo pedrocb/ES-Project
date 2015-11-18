@@ -114,7 +114,6 @@ def create_ticket():
     if not request.query.o:
         redirect("/detail/"+emailGlobal+"?o="+request.query.o)
     else:
-        print request.forms.get('description')
         create_ticket = {
             'id' : 'ticket/new',
             'Owner' : 'nobody',
@@ -131,7 +130,30 @@ def create_ticket():
             'content':content
         }
         rt_object.get_data_from_rest('ticket/new',query)
+        print query
         redirect('/?o=%s' % request.query.o)
+
+@post('/ticket/<ticket_id>/comment')
+def ticket_comment(ticket_id):
+
+        comment = {
+            'id' : ticket_id,
+            'Action' : 'comment',
+            'Text'   : request.forms.get('comment'),
+        }
+
+        content = ''
+
+        for key in comment:
+            content += '{0}: {1}\n'.format(key, comment[key])
+
+        query = {
+            'content':content
+        }
+        rt_object.get_data_from_rest('ticket/'+ticket_id+'/comment',query)
+
+        ticket_action(ticket_id, 'forward')
+
 
 @get('/detail/<email>')
 def email_detail(email):
@@ -229,7 +251,6 @@ def ticket_action(ticket_id, action):
     ticket_action_aux(ticket_id, action)
     redirect("/detail/"+emailGlobal+"?o="+request.query.o)
 
-#mudou-se (redirect)
 
 def ticket_action_aux(ticket_id, action):
     start_time = time()
