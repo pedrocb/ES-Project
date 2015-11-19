@@ -157,6 +157,28 @@ def ticket_comment(ticket_id):
         rt_object.get_data_from_rest('ticket/' + ticket_id + '/comment', query)
         ticket_action(ticket_id, 'forward')
 
+@post('/ticket/<ticket_id>/edit')
+def ticket_delete(ticket_id):
+    if not request.query.o:
+        redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
+    else:
+        comment = {
+            'id': ticket_id,
+            'Status': 'deleted',
+        }
+
+        content = ''
+
+        for key in comment:
+            content += '{0}: {1}\n'.format(key, comment[key])
+
+        query = {
+            'content': content
+        }
+
+        rt_object.get_data_from_rest('ticket/' + ticket_id + '/edit', query)
+        redirect('/?o=%s' % request.query.o)
+
 
 @get('/detail/<email>')
 def email_detail(email):
