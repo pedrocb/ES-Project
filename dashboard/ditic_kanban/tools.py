@@ -234,7 +234,8 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'timeworked': calculate_time_worked(ticket_line) + ' minutes',
                     'starts': '0',
-                    'status': 'new'
+                    'status': 'new',
+                    'cf.{is - informatica e sistemas}': 'dir-inbox',
                 }
             )
         elif ticket_line['status'] == 'resolved':
@@ -244,6 +245,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'starts': ctime(time()),
                     'status': 'open',
+                    'cf.{is - informatica e sistemas}': 'open',
                 }
             )
         elif ticket_line['status'] == 'stalled':
