@@ -109,10 +109,6 @@ def auth():
         return template('auth', result)
 
 
-@get('/ticket/<ticket-id>/show')
-def ticket_details():
-    print "oi"
-
 
 @get('/detail/<email>')
 def email_detail(email):
@@ -184,6 +180,20 @@ def create_ticket():
         }
         rt_object.get_data_from_rest('ticket/new', query)
         redirect('/?o=%s' % request.query.o)
+
+@get('/ticket/<ticket_id>/commentTemplate')
+def comment_template(ticket_id):
+    email = emailGlobal
+    result = create_default_result()
+    if request.query.o == '' or not user_auth.check_id(request.query.o):
+        result.update({'message': ''})
+        return template('auth', result)
+
+    result.update({'email':email})
+    result.update({'username_id': request.query.o})
+    result.update({'ticket_id':ticket_id})
+    return template('comment_ticket', result)
+
 
 
 @post('/ticket/<ticket_id>/comment')

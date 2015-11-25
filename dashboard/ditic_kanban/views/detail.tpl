@@ -98,19 +98,19 @@ Subject: {{ticket['subject']}}" href="http://localhost:4200/Ticket/Display.html?
                  <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">&gt;</a>
             %end
 
+
+             % if ticket['kanban_actions']['forward'] and ticket['status']=='open':
+                 <a href="/ticket/{{ticket['id']}}/commentTemplate?o={{username_id}}&email={{email}}">&gt;</a>
+            %end
+
+
+
+
              <!-- Form to delete a ticket -->
             <form action="/ticket/{{ticket['id']}}/edit?o={{username_id}}&email={{email}}" method="post">
               <input type="submit" value="X">
             </form>
 
-            %if ticket['status']=="open":
-                <!-- Form to comment a ticket -->
-                <form action="/ticket/{{ticket['id']}}/comment?o={{username_id}}&email={{email}}" method="post">
-                  Comment: <input name="comment" style="width: 200px; height:100px;" type="text">
-                  <input type="submit" value="Done">
-                </form>
-
-            %end
             <br>
             % end
         %   end
