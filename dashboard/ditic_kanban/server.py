@@ -242,6 +242,36 @@ def ticket_delete(ticket_id):
         redirect('/?o=%s' % request.query.o)
 
 
+@get('/ticket/<ticket_id>/detail')
+def ticket_detail(ticket_id):
+
+    result = create_default_result()
+    response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/show', {})
+    available = ['id', 'queue','owner','subject','status','priority','resolved','timeworked','cf.{is - informatica e sistemas}']
+    for line in response:
+        divided_line = line.split(":")
+        if divided_line[0] in available:
+            if divided_line[0]!=available[8]:
+                first_argument = divided_line[0].strip()
+                second_argument = divided_line[1].strip()
+            else:
+                first_argument = "cf"
+            result.update({first_argument:second_argument})
+
+    description = getTicketDescription(ticket_id)
+    result.update({'description':description})
+    return template('ticket_detail', result)
+
+def getTicketDescription(ticket_id):
+    response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/history?format=l', {})
+
+    for transaction in response:
+        for line in transaction.split("\n"):
+            print line
+            if line.split(':')[0]=='content':
+                return line.split(':')[1]
+
+
 @get('/detail/<email>')
 def email_detail(email):
     global emailGlobal

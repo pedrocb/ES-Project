@@ -28,27 +28,27 @@
            % for ticket in sorted(tickets[priority], reverse=True):
                 <tr>
                     <td>
-                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             {{ticket['id']}}
                         </a>
                     </td>
                     <td>
-                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             {{ticket['status']}}
                         </a>
                     </td>
                     <td>
-                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             {{ticket['cf.{servico}']}}
                         </a>
                     </td>
                     <td>
-                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             {{ticket['requestors']}}
                         </a>
                     </td>
                     <td>
-                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             % subject = ticket['subject']
                             % if len(ticket['subject']) > max_len:
                             %   subject = ticket['subject'][:max_len]+'...'
@@ -57,7 +57,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             Created: {{ticket['created']}}<br>
                             Last Update: {{ticket['lastupdated']}}
                         </a>
