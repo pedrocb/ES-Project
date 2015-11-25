@@ -109,6 +109,58 @@ def auth():
         return template('auth', result)
 
 
+@get('/ticket/<ticket-id>/show')
+def ticket_details():
+    print "oi"
+
+
+@get('/detail/<email>')
+def email_detail(email):
+    global emailGlobal
+    emailGlobal = email
+
+    start_time = time()
+
+    result = create_default_result()
+    if request.query.o == '' or not user_auth.check_id(request.query.o):
+        result.update({'message': ''})
+        return template('auth', result)
+
+    result.update({'username': user_auth.get_email_from_id(request.query.o)})
+    result.update({'email': email})
+    result.update({'username_id': request.query.o})
+
+    result.update(user_tickets_details(
+        user_auth.get_rt_object_from_email(
+            user_auth.get_email_from_id(request.query.o)
+        ), email))
+
+    # Is there any URGENT ticket?
+    result.update({'urgent': get_urgent_tickets(rt_object)})
+
+    result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
+
+    result.update({'summary:': get_summary_info()})
+    if email == 'dir' or email == 'dir-inbox' or email == 'unknown' or not email:
+        return template('ticket_list', result)
+    else:
+        return template('detail', result)
+
+
+@post('/ticket/create')
+def createTemplate():
+    email = emailGlobal
+    result = create_default_result()
+    if request.query.o == '' or not user_auth.check_id(request.query.o):
+        result.update({'message': ''})
+        return template('auth', result)
+
+    result.update({'username':user_auth.get_email_from_id(request.query.o)})
+    result.update({'email':email})
+    result.update({'username_id': request.query.o})
+    return template('create_ticket', result)
+
+
 @post('/ticket/new')
 def create_ticket():
     print "create ticket: ", request.query.o
@@ -207,7 +259,7 @@ def email_detail(email):
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
 
     result.update({'summary:': get_summary_info()})
-    if email == 'dir' or email == 'dir-inbox' or email == 'unknown':
+    if email == 'dir' or email == 'dir-inbox' or email == 'unknown' or not email:
         return template('ticket_list', result)
     else:
         return template('detail', result)
