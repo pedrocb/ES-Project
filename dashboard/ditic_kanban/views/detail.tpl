@@ -1,5 +1,5 @@
 <form action="/search?o={{get('username_id', '')}}" method="post">
-    Search: <input name="search" type="search">
+    <input name="search" type="search" placeholder="Search">
 </form>
 
 % include('summary')
@@ -107,9 +107,11 @@ Subject: {{ticket['subject']}}" href="/ticket/{{ticket['id']}}/detail" target="_
 
 
              <!-- Form to delete a ticket -->
+            <div id="deleteForm">
             <form action="/ticket/{{ticket['id']}}/edit?o={{username_id}}&email={{email}}" method="post">
-              <input type="submit" value="X">
+              <input type="submit" value="X" >
             </form>
+            </div>
 
             <br>
             % end
