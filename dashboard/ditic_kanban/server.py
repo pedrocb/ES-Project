@@ -410,6 +410,9 @@ def ticket_action_aux(ticket_id, action):
 def static(filepath):
     return static_file(filepath, root=STATIC_PATH)
 
+@get('/static/<filename>')
+def fileget(filename):
+    return static_file(filename, root='views')
 
 def start_server():
     run(server="paste", host='0.0.0.0', port=8080, debug=False, interval=1, reloader=True, quiet=False)
