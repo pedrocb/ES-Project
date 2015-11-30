@@ -103,16 +103,6 @@ Subject: {{ticket['subject']}}" href="/ticket/{{ticket['id']}}/detail" target="_
                  <a href="/ticket/{{ticket['id']}}/commentTemplate?o={{username_id}}&email={{email}}">&gt;</a>
             %end
 
-
-
-
-             <!-- Form to delete a ticket -->
-            <div id="deleteForm">
-            <form action="/ticket/{{ticket['id']}}/edit?o={{username_id}}&email={{email}}" method="post">
-              <input type="submit" value="X" >
-            </form>
-            </div>
-
             <br>
             % end
         %   end

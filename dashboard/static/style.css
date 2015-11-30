@@ -83,7 +83,6 @@ form input {
  
   font-weight: 300;
 }
-
 form input:hover {
   background-color: rgb(255, 255, 255);
 }
@@ -112,8 +111,4 @@ form button {
 }
 form button:hover {
   background-color: #f5f7f9;
-}
-
-#deleteForm {
-  width:50px;
 }
