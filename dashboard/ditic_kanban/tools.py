@@ -176,7 +176,6 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
     :param user_email: the user email who is requesting this action (we need this to take a ticket)
     :return: RT result (I think we must change this output!)
     """
-
     # First of all, get the actual ticket information
     query = 'id = "%s"' % ticket_id
 
@@ -235,7 +234,8 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'timeworked': calculate_time_worked(ticket_line) + ' minutes',
                     'starts': '0',
-                    'status': 'new'
+                    'status': 'new',
+                    'cf.{is - informatica e sistemas}': 'dir-inbox',
                 }
             )
         elif ticket_line['status'] == 'resolved':
@@ -245,6 +245,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'starts': ctime(time()),
                     'status': 'open',
+                    'cf.{is - informatica e sistemas}': 'open',
                 }
             )
         elif ticket_line['status'] == 'stalled':
@@ -278,6 +279,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 }
             )
         elif ticket_line['status'] == 'open':
+            print "status open, action forward"
             result = modify_ticket(
                 rt_object,
                 ticket_id,

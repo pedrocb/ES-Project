@@ -1,5 +1,5 @@
 <form action="/search?o={{get('username_id', '')}}" method="post">
-    Search: <input name="search" type="search">
+    <input name="search" type="search" placeholder="Search">
 </form>
 
 % include('summary')
@@ -79,7 +79,7 @@ TimeWorked: {{ticket['timeworked']}}
 
 
 Requestor: {{ticket['requestors']}}
-Subject: {{ticket['subject']}}" href="http://localhost:4200/Ticket/Display.html?id={{ticket['id']}}" target="_blank">
+Subject: {{ticket['subject']}}" href="/ticket/{{ticket['id']}}/detail" target="_blank">
                 {{ticket['id']}}
                 % subject = ticket['subject']
                 % if len(ticket['subject']) > max_len:
@@ -94,16 +94,15 @@ Subject: {{ticket['subject']}}" href="http://localhost:4200/Ticket/Display.html?
             % if ticket['kanban_actions']['stalled']:
             <a href="/ticket/{{ticket['id']}}/action/stalled?o={{username_id}}&email={{email}}">\</a>
             % end
-            % if ticket['kanban_actions']['forward']:
+            % if ticket['kanban_actions']['forward'] and ticket['status']!='open':
                  <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">&gt;</a>
-                %if ticket['status']=="open":
-                    <!-- Form to comment a ticket -->
-                    <form action="/ticket/{{ticket['id']}}/comment" method="post">
-                      Comment: <input name="comment" style="width: 200px; height:100px;" type="text">
-                      <input type="submit" value="Comment Ticket">
-                    </form>
-                %end
             %end
+
+
+             % if ticket['kanban_actions']['forward'] and ticket['status']=='open':
+                 <a href="/ticket/{{ticket['id']}}/commentTemplate?o={{username_id}}&email={{email}}">&gt;</a>
+            %end
+
             <br>
             % end
         %   end
