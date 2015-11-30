@@ -254,7 +254,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 ticket_id,
                 {
                     'starts': ctime(time()),
-                    'status': 'open',
+                    'status': 'new',
                 }
             )
 

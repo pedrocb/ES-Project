@@ -72,10 +72,11 @@ def get_root():
 
     result = create_default_result()
     # Removed to be a display at the TV
-    # if request.query.o == '' or not user_auth.check_id(request.query.o):
-    #    result.update({'message': ''})
-    #    return template('auth', result)
-    # result.update({'username': user_auth.get_email_from_id(request.query.o)})
+    if request.query.o == '' or not user_auth.check_id(request.query.o):
+        result.update({'message': ''})
+        return template('auth', result)
+
+    result.update({'username': user_auth.get_email_from_id(request.query.o)})
     result.update({'username_id': request.query.o})
     today = date.today().isoformat()
     result.update({'statistics': get_statistics(get_date(30, today), today)})
