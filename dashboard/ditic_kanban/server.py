@@ -199,9 +199,6 @@ def comment_template(ticket_id):
 
 @post('/ticket/<ticket_id>/comment')
 def ticket_comment(ticket_id):
-    if not request.query.o:
-        redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
-    else:
         comment = {
             'id': ticket_id,
             'Action': 'comment',
@@ -216,7 +213,6 @@ def ticket_comment(ticket_id):
         query = {
             'content': content
         }
-
         rt_object.get_data_from_rest('ticket/' + ticket_id + '/comment', query)
         ticket_action(ticket_id, 'forward')
 
@@ -342,6 +338,7 @@ def search():
 def ticket_action(ticket_id, action):
     ticket_action_aux(ticket_id, action)
     redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
+
 
 
 def ticket_action_aux(ticket_id, action):
