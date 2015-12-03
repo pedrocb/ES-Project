@@ -1,13 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
 
-.Titulo{
+.Title{
     font-family: 'Helvetica', sans-serif;
     color: black;
     text-align: center
 }
-
-    
-
 
 form button {
   -webkit-appearance: none;

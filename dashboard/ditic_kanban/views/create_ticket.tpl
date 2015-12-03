@@ -4,14 +4,14 @@
 <html>
 <head>
 	<title>Create Ticket</title>
-	<link rel="stylesheet" type="text/css" href="/static/criar-css.css">
+	<link rel="stylesheet" type="text/css" href="/static/create_ticket.css">
 </head>
 
 <body>
    	<br><br>
    	<br><br>	
    	<br><br>
-       <div class= "Titulo" >
+       <div class= "Title" >
 	    <h1 align="center">Create a Ticket </h1>
         </div>
     <form action="/ticket/new?o={{username_id}}&email={{email}}" method="post">
