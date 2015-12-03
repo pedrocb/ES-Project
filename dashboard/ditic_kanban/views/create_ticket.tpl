@@ -1,24 +1,32 @@
-% rebase('skin')
+<!DOCTYPE html>
+
+
 <html>
+<head>
+	<title>Create Ticket</title>
+	<link rel="stylesheet" type="text/css" href="/static/criar-css.css">
+</head>
 
 <body>
    	<br><br>
    	<br><br>	
    	<br><br>
-
+       <div class= "Titulo" >
 	    <h1 align="center">Create a Ticket </h1>
+        </div>
     <form action="/ticket/new?o={{username_id}}&email={{email}}" method="post">
-        <div class="TT2"style="margin-left: 28.2%">
-        Subject:<textarea name="subject" cols="70" rows="1" align="center">
+        <form class="form">
+            <div class="TT2">
+        Subject: &nbsp&nbsp&nbsp&nbsp <textarea name="subject" cols="70" rows="1" align="center">
 	</textarea>        
-</div>
-        <div class="TT2"style="margin-left: 26.7%">
-        Description: <textarea name="description" cols="70" rows="10" align="center" >
+
+        <p>Description: <textarea name="description" cols="70" rows="10" align="center" >
         </textarea>
+        </p>
         </div>
 	<br><br>
         
-            <button type="submit" id="tikect-button">Create</button>
+            <button type="submit" id="ticket-button">Create</button>
     </form>
 
 </body>

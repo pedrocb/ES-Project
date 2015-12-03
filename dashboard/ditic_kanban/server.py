@@ -71,7 +71,6 @@ def get_root():
     start_time = time()
 
     result = create_default_result()
-    # Removed to be a display at the TV
     if request.query.o == '' or not user_auth.check_id(request.query.o):
         result.update({'message': ''})
         return template('auth', result)
