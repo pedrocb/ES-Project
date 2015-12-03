@@ -163,10 +163,13 @@ def create_ticket():
     if not request.query.o:
         redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
     else:
+        text =  request.forms.get('description').replace('\n','\n ')
+
+        print text
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
-            'Text': request.forms.get('description'),
+            'Text': text,
             'Subject': request.forms.get('subject'),
             'Queue': 'General',
             'CF-IS - Informatica e Sistemas': 'DIR',
