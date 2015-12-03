@@ -23,6 +23,7 @@
         <p>Description: <textarea name="description" cols="70" rows="10" align="center" >
         </textarea>
         </p>
+        Priority: (1-100): <input type="text" name="priority"><br>
         </div>
 	<br><br>
         

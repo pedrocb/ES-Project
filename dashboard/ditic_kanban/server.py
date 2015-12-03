@@ -165,14 +165,17 @@ def create_ticket():
     else:
         text = "".join([s for s in request.forms.get("description").splitlines(True) if s.strip("\r\n")])
         text = text.replace("\n","\n ")
+
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
             'Text': text,
+            'Priority': request.forms.get("priority"),
             'Subject': request.forms.get('subject'),
             'Queue': 'General',
             'CF-IS - Informatica e Sistemas': 'DIR',
         }
+
         content = ''
         for key in create_ticket:
             content += '{0}: {1}\n'.format(key, create_ticket[key])
