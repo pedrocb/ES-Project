@@ -163,9 +163,8 @@ def create_ticket():
     if not request.query.o:
         redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
     else:
-        text =  request.forms.get('description').replace('\n','\n ')
-
-        print text
+        text = "".join([s for s in request.forms.get("description").splitlines(True) if s.strip("\r\n")])
+        text = text.replace("\n","\n ")
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
@@ -236,17 +235,25 @@ def ticket_detail(ticket_id):
             result.update({first_argument:second_argument})
 
     description = getTicketDescription(ticket_id)
-    result.update({'description':description})
+    result.update({'description':description    })
     return template('ticket_detail', result)
 
 def getTicketDescription(ticket_id):
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/history?format=l', {})
 
-    for transaction in response:
-        for line in transaction.split("\n"):
-            print line
-            if line.split(':')[0]=='content':
-                return line.split(':')[1]
+    for i in range(0,len(response)):
+        if response[i].startswith("content:"):
+            break
+    return_value = response[i].split(': ')[1]
+
+    i+=1
+    while(response[i]!=''):
+        return_value+=("\n" + response[i])
+        i+=1
+
+    print return_value
+    return return_value
+
 
 
 @get('/detail/<email>')
