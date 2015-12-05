@@ -112,3 +112,29 @@ form button {
 form button:hover {
   background-color: #f5f7f9;
 }
+
+
+#head-container{
+  width:100vw;
+  background-color:#67D1F5;
+  height:5vh;
+  overflow: auto;
+  display: table;
+  vertical-align:middle;
+}
+
+#button-wrapper {
+  width:50px;
+  background:transparent;
+  vertical-align: middle;
+  display:table-cell;
+  text-align:center;
+  font-size:150%;
+  height:100%;
+  border-right:2px solid darkblue;
+}
+
+#home-button{
+  color:inherit;
+  text-decoration: none;
+}

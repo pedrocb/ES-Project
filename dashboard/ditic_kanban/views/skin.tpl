@@ -12,8 +12,13 @@
     % end
 </head>
 <body>
-% username_id = get('username_id', '')
-<a href="/?o={{username_id}}">home</a>
-{{!base}}
+    <div id="head-container">
+        <div id="button-wrapper">
+            % username_id = get('username_id', '')
+            <a href="/?o={{username_id}}" id="home-button">&#8801;</a>
+        </div>
+        <div></div>
+    </div>
+    {{!base}}
 </body>
 </html>
