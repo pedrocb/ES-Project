@@ -1,35 +1,51 @@
+% rebase('skin')
+
 <!DOCTYPE html>
-
-
 <html>
+
 <head>
+
 	<title>Create Ticket</title>
-	<link rel="stylesheet" type="text/css" href="/static/create_ticket.css">
+	<link rel="stylesheet" href="/static/assets/css/main.css" >
 </head>
 
 <body>
-   	<br><br>
-   	<br><br>	
-   	<br><br>
-       <div class= "Title" >
-	    <h1 align="center">Create a Ticket </h1>
-        </div>
-    <form action="/ticket/new?o={{username_id}}&email={{email}}" method="post">
-        <form class="form">
-            <div class="TT2">
-        Subject: &nbsp&nbsp&nbsp&nbsp <textarea name="subject" cols="70" rows="1" align="center">
-	</textarea>        
+    	<section id="main" class="wrapper">
+				<div class="container">
+					<header class="major special">
+						<h2>Create a Ticket</h2>
 
-        <p>Description: <textarea name="description" cols="70" rows="10" align="center" >
-        </textarea>
-        </p>
-        Priority: (1-100): <input type="text" name="priority"><br>
-        </div>
-	<br><br>
-        
-            <button type="submit" id="ticket-button">Create</button>
-    </form>
+						   <form action="/ticket/new?o={{username_id}}&email={{email}}" method="post">
+						<div class="container 50%">
+							<div class="row uniform 50%">
+								<div class=" 12u$">
+										<textarea name="subject" id="message" placeholder="Subject:" rows="1"></textarea>
+									</div>
+									<div class="12u$">
+										<textarea name="description" id="message" placeholder="Description:" rows="6"></textarea>
+
+									</div>
+                            </div>
+                               </div>
+
+
+
+                            <div>
+									<div class="12u$">
+										<ul class="actions">
+
+										<li><button type="submit" id="ticket-button" value="Create"></li>
+
+										</ul>
+									</div>
+								</div>
+
+</section>
+
+
+
+
+
 
 </body>
 </html>
-

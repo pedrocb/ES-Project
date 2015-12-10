@@ -1,14 +1,95 @@
-% rebase('skin')
+<!DOCTYPE html>
+<html>
 
-<p><strong>id:</strong> {{id}}</p>
-<p><strong>Queue:</strong> {{queue}}</p>
-<p><strong>Owner:</strong> {{owner}}</p>
-<p><strong>Subject:</strong> {{subject}}</p>
-<p style="white-space:pre-line"><strong>Description:</strong>{{description}}</p>
-<p><strong>Status:</strong> {{status}}</p>
-<p><strong>Priority:</strong> {{priority}}</p>
-<p><strong>Resolved:</strong> {{resolved}}</p>
-<p><strong>TimeWorked:</strong> {{timeworked}}</p>
-<p><strong>cf.{is - informatica e sistemas}:</strong> {{cf}}</p>
+<head>
 
+	<title>Ticket Description</title>
+	<link rel="stylesheet" href="/static/assets/css/main.css" >
+</head>
+
+
+<body>
+
+
+    	<section id="main" class="wrapper">
+				<div class="container">
+					<header class="major special">
+						<h2>TICKET DESCRIPTION</h2>
+
+
+                           <form action="#" method="POST">
+						<div class="container 50%">
+							<div class="row uniform 50%">
+					<div class="12u$">
+							<div class="table-wrapper">
+
+                                    <table class="tabela2">
+
+                                        <tbody>
+                                              <tr>
+                                                <td align="left">ID</td>
+                                                <td align="right">{{id}}/34</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td align="left">QUEUE</td>
+                                                <td align="right">{{queue}}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td align="left">OWNER</td>
+                                                <td align="right">{{owner}}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td align="left">SUBJECT</td>
+                                                <td align="right">{{subject}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left">DESCRIPTION</td>
+                                                <td align="right">{{description}}</td>
+
+                                            </tr>
+                                             <tr>
+                                                <td align="left">STATUS</td>
+                                                <td align="right">{{status}}</td>
+
+                                            <tr>
+                                                <td align="left">PRIORITY</td>
+                                                <td align="right">{{priority}}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td align="left">RESOLVED</td>
+                                                <td align="right">{{resolved}}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td align="left">TIME WORKED</td>
+                                                <td align="right">{{timeworked}}</td>
+
+                                            </tr>
+                                            <tr>
+                                                <td align="left">CF.{informatica e sistemas } </td>
+                                                <td align="right">{{cf}}</td>
+
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+                        <div/>
+
+
+
+                            </div>
+                                </div>
+                            </div>
+                                </form>
+						</section>
+
+
+</body>
+</html>
 

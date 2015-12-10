@@ -1,24 +1,44 @@
+% rebase('skin')
 <!DOCTYPE html>
-
 <html>
 
 <head>
 
-	<title>Comment</title>
-	<link rel="stylesheet" type="text/css" href="/static/comment_ticket.css" >
+	<title>Comment Ticket</title>
+	<link rel="stylesheet" href="/static/assets/css/main.css" >
 </head>
 
-<body>
-	<br><br>
-	<div class="Title" >
-    <h1 align="center">Comment </h1>
 
-    <form action="/ticket/{{ticket_id}}/comment?o={{username_id}}&email={{email}}" method="post">
-        <textarea name="comment" cols="70" rows="10" align="center"> </textarea>
-        <br>
-        <br>
-            <button type="submit" id="ticket-button"> Done</button>
-    </form>
-</div>
+<body>
+
+    	<section id="main" class="wrapper">
+				<div class="container">
+					<header class="major special">
+						<h2>COMMENT DONE</h2>
+
+                           <form action="/ticket/{{ticket_id}}/comment?o={{username_id}}&email={{email}}" method="post">
+						<div class="container 50%">
+							<div class="row uniform 50%">
+								<div class=" 12u$">
+                        <textarea name="comment" id="message" placeholder="justification:" rows="6"></textarea>
+									</div>
+
+                            </div>
+                               </div>
+
+
+                               <div>
+									<div class="12u$">
+										<ul class="actions">
+
+										<li><input type="submit" class="button" id="ticket-button" value="Done"></li>
+
+										</ul>
+									</div>
+								</div>
+								</form>
+                              </section>
+
+
 </body>
 </html>
