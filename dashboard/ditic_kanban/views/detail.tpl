@@ -1,8 +1,8 @@
+% rebase('skin')
 <form action="/search?o={{get('username_id', '')}}" method="post">
     <input name="search" type="search" placeholder="Search">
 </form>
 
-% include('summary')
 % max_len = 30
 
 <p>

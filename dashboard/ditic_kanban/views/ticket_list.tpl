@@ -1,3 +1,4 @@
+% rebase('skin')
 <form action="/search?o={{get('username_id', '')}}" method="post">
     Search: <input name="search" type="search">
 </form>
