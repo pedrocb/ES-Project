@@ -174,7 +174,6 @@ def create_ticket():
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
-            'Creator': user_auth.get_email_from_id(request.query.o),
             'Text': text,
             'Priority': request.forms.get("priority"),
             'Subject': request.forms.get('subject'),

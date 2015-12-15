@@ -66,7 +66,7 @@
                                                         <td>
                                                         <div class="6u$ 12u$(small)">
                                                           
-                                        <a href="/ticket/{{ticket['id']}}/action/take?o={{username_id}}&email={{email}}">(take)</a>
+                                        <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">Move to Dir-Inbox</a>
                                                         <label for="copy"></label>
                                                         </div></td>
                                             </tr>
