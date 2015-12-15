@@ -138,14 +138,18 @@ def email_detail(email):
 
     result.update({'summary:': get_summary_info()})
     if email=='dir':
+        print email
         return template('dir', result)
     elif email=='dir-inbox':
+        print email
         return template('dir-inbox', result)
     elif email=='unknown' or not email:
+        print email
         return template('ticket_list', result)
     else:
-        return template('detail', result)
-
+        print email
+        #return template('detail', result)
+        return template('ticket_list', result)
 
 @post('/ticket/create')
 def createTemplate():
