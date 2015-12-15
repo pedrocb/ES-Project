@@ -164,6 +164,7 @@ def createTemplate():
 @post('/ticket/new')
 def create_ticket():
     print "create ticket: ", request.query.o
+    print "email: " ,user_auth.get_email_from_id(request.query.o)
     if not request.query.o:
         redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
     else:
@@ -173,6 +174,7 @@ def create_ticket():
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
+            'Creator': user_auth.get_email_from_id(request.query.o),
             'Text': text,
             'Priority': request.forms.get("priority"),
             'Subject': request.forms.get('subject'),
@@ -188,6 +190,7 @@ def create_ticket():
             'content': content
         }
         rt_object.get_data_from_rest('ticket/new', query)
+        print "sucesso"
         redirect('/?o=%s' % request.query.o)
 
 @get('/ticket/<ticket_id>/commentTemplate')
@@ -230,11 +233,11 @@ def ticket_detail(ticket_id):
 
     result = create_default_result()
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/show', {})
-    available = ['id', 'queue','owner','subject','status','priority','resolved','timeworked','cf.{is - informatica e sistemas}']
+    available = ['id', 'queue','owner','subject','creator','status','priority','resolved','timeworked','cf.{is - informatica e sistemas}']
     for line in response:
         divided_line = line.split(":")
         if divided_line[0] in available:
-            if divided_line[0]!=available[8]:
+            if divided_line[0]!=available[9]:
                 first_argument = divided_line[0].strip()
                 second_argument = divided_line[1].strip()
             else:
@@ -260,9 +263,6 @@ def getTicketDescription(ticket_id):
 
     print return_value
     return return_value
-
-
-
 
 
 @get('/closed/<email>')

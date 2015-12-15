@@ -28,7 +28,7 @@
                                         <tbody>
                                               <tr>
                                                 <td align="left">ID</td>
-                                                <td align="right">{{id}}/34</td>
+                                                <td align="right">{{id}}</td>
 
                                             </tr>
                                             <tr>
@@ -36,10 +36,15 @@
                                                 <td align="right">{{queue}}</td>
 
                                             </tr>
+
+                                            <tr>
+                                                <td align="left">CREATOR</td>
+                                                <td align="right">{{creator}}</td>
+                                            </tr>
+
                                             <tr>
                                                 <td align="left">OWNER</td>
                                                 <td align="right">{{owner}}</td>
-
                                             </tr>
                                             <tr>
                                                 <td align="left">SUBJECT</td>
