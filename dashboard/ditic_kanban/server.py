@@ -148,8 +148,8 @@ def email_detail(email):
         return template('ticket_list', result)
     else:
         print email
-        #return template('detail', result)
-        return template('ticket_list', result)
+        return template('detail', result)
+        #return template('ticket_list', result)
 
 @post('/ticket/create')
 def createTemplate():
