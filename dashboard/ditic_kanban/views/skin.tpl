@@ -23,17 +23,15 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li><a href="index.html">LOGIN</a></li>
-					<li><a href="kanban.html">KANBAN</a></li>
-					<li><a href="dir.html">DIR</a></li>
-                    <li><a href="dir-inbox.html">DIR-INBOX</a></li>
+					<li><a href="/detail/dir?o={{username_id}}">HOME</a></li>
+					<li><a href="/detail/kanban?o={{username_id}}">KANBAN</a></li>
+					<li><a href="/detail/dir?o={{username_id}}">DIR</a></li>
+                    <li><a href="/detail/dir-inbox?o={{username_id}}">DIR-INBOX</a></li>
                     <li><a href="user.html">USER</a></li>
 				</ul>
 			</nav>
 
-
 % username_id = get('username_id', '')
-<a href="/?o={{username_id}}">home</a>
 {{!base}}
 
 <!-- Scripts -->

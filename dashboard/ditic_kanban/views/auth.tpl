@@ -46,17 +46,18 @@
 					</header>
 					<form action="/auth" method="post">
 						<div class="container 75%">
+
 							<div class="row uniform 50%">
-								<div class=" 12u$">
+								<div class=" 13u$">
                                 
 									<input name="username" placeholder="Username" type="text" />
 								</div>
 								
-								<div class="12u$">
-									<input name="password" placeholder="Password" type="password"
+								<div class="13u$">
+									<input name="password" placeholder="Password" type="password"/>
 								</div>
 							</div>
-            
+
 						</div>
 						<ul class="actions">
                             
