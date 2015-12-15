@@ -81,12 +81,7 @@
 """ % result
 
 % rebase('skin', meta_refresh=300)
-<p>
-    % username = get('username', '')
-    % if username:
-    <strong>Authenticated as: {{username}}</strong>
-    % end
-</p>
+
 
 <section id="main" class="wrapper">
 				<div class="container">

@@ -13,11 +13,18 @@
     % end
 </head>
 
+% username_id = get('username_id', '')
+{{!base}}
 
 <body class="landing">
 
 		<!-- Header -->
-			<header id="header" class="alt">
+			<header id="header">
+
+                    % username = get('username', '')
+                    % if username:
+                    <h1><a>{{username}}</a></h1>
+                    % end
 				<a href="#nav">Menu</a>
 			</header>
 
@@ -31,8 +38,7 @@
 				</ul>
 			</nav>
 
-% username_id = get('username_id', '')
-{{!base}}
+
 
 <!-- Scripts -->
 			<script src="/static/assets/js/jquery.min.js"></script>
