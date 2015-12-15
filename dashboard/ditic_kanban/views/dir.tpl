@@ -65,7 +65,8 @@
 
                                                         <td>
                                                         <div class="6u$ 12u$(small)">
-                                                        <input type="checkbox" id="copy" name="copy" >
+                                                          
+                                        <a href="/ticket/{{ticket['id']}}/action/take?o={{username_id}}&email={{email}}">(take)</a>
                                                         <label for="copy"></label>
                                                         </div></td>
                                             </tr>

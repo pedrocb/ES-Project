@@ -328,8 +328,7 @@ def ticket_action(ticket_id, action):
 
 def ticket_action_aux(ticket_id, action):
     start_time = time()
-
-    print request.query.o, " ", user_auth.check_id((request.query.o))
+    print(request.query.email)
     result = create_default_result()
     if request.query.o == '' or not user_auth.check_id(request.query.o):
         result.update({'message': ''})
