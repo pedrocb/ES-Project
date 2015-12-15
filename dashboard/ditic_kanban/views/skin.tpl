@@ -13,6 +13,7 @@
     % end
 </head>
 
+
 <body class="landing">
 
 		<!-- Header -->
@@ -40,6 +41,7 @@
 			<script src="/static/assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="/static/assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="/static/assets/js/main.js"></script>
+
 
 </body>
 </html>
