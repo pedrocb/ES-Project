@@ -34,7 +34,7 @@
 									<div class="12u$">
 										<ul class="actions">
 
-										<li><button type="submit" id="ticket-button" value="Create"></li>
+										<li><button type="submit" id="ticket-button" value="Create">Create</button></li>
 
 										</ul>
 									</div>
