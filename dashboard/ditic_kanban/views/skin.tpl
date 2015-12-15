@@ -31,10 +31,10 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li><a href="/detail/entrance_summary?o={{username_id}}">GROUP KANBAN</a></li>
+					<li><a href="/?o={{username_id}}">GROUP KANBAN</a></li>
 					<li><a href="/detail/dir?o={{username_id}}">DIR</a></li>
                     <li><a href="/detail/dir-inbox?o={{username_id}}">DIR-INBOX</a></li>
-                    <li><a href="/detail?o={{username_id}}">USER</a></li>
+                    <li><a href="/detail/{{username}}?o={{username_id}}">USER</a></li>
 				</ul>
 			</nav>
 

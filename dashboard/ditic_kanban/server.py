@@ -138,14 +138,18 @@ def email_detail(email):
 
     result.update({'summary:': get_summary_info()})
     if email=='dir':
+        print email
         return template('dir', result)
     elif email=='dir-inbox':
+        print email
         return template('dir-inbox', result)
     elif email=='unknown' or not email:
+        print email
         return template('ticket_list', result)
     else:
-        return template('detail', result)
-
+        print email
+        #return template('detail', result)
+        return template('ticket_list', result)
 
 @post('/ticket/create')
 def createTemplate():
@@ -174,7 +178,6 @@ def create_ticket():
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
-            'Creator': user_auth.get_email_from_id(request.query.o),
             'Text': text,
             'Priority': request.forms.get("priority"),
             'Subject': request.forms.get('subject'),
@@ -336,8 +339,7 @@ def ticket_action(ticket_id, action):
 
 def ticket_action_aux(ticket_id, action):
     start_time = time()
-
-    print request.query.o, " ", user_auth.check_id((request.query.o))
+    print(request.query.email)
     result = create_default_result()
     if request.query.o == '' or not user_auth.check_id(request.query.o):
         result.update({'message': ''})
