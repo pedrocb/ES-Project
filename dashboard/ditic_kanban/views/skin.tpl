@@ -24,8 +24,7 @@
 		<!-- Nav -->
 			<nav id="nav">
 				<ul class="links">
-					<li><a href="/detail/dir?o={{username_id}}">HOME</a></li>
-					<li><a href="/detail/kanban?o={{username_id}}">KANBAN</a></li>
+					<li><a href="/detail/entrance_summary?o={{username_id}}">GROUP KANBAN</a></li>
 					<li><a href="/detail/dir?o={{username_id}}">DIR</a></li>
                     <li><a href="/detail/dir-inbox?o={{username_id}}">DIR-INBOX</a></li>
                     <li><a href="user.html">USER</a></li>
