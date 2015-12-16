@@ -15,16 +15,17 @@
                   <div class="row uniform 50%">
                      <div class="12u$">
                         <div class="table-wrapper">
-                         <ul class="actions">
-                           <div>
-                                 <li><a href= "" class="button" > DIR </a>
-                                 <li>
-                                 <li><a href="dir-inbox.html"  class="button disabled " >DIR-INBOX </a>
-                                 <li>
-                            </div>
-
-                             </ul>
-                           <table class="tabela2">
+                          <ul class="actions">
+                            <li>
+                            <li>
+                            <li>
+                              <a href="/detail/dir?o={{username_id}}"  class="button" > DIR
+                        </a>
+                            <li>
+                            <li><div class="button disabled " >DIR-INBOX </div>
+                            <li>
+                          </ul>
+                          <table class="tabela2">
                               <thead>
                                  <tr>
                                     <th>ID</th>

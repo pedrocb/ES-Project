@@ -18,9 +18,7 @@
                                     <div>
                                         <!-- Button to create ticket -->
                                         <ul class="actions">
-                                            <li><form action="/ticket/create?o={{username_id}}&email={{email}}" method="post">
-                                                <input type="submit" value="Create Ticket">
-                                                </form>
+                                            <li>
                                             <li>
                                             <li><div class="button disabled " > DIR </div>
                                             <li>
@@ -82,7 +80,11 @@
          </div>
          <div>
             <ul class="actions">
-               <li ><input type="submit" class="button" value="Send to dir- inbox" /></li>
+               <li >
+                 <form action="/ticket/create?o={{username_id}}&email={{email}}" method="post">
+                   <input type="submit" value="Create Ticket">
+                 </form>
+               </li>
             </ul>
          </div>
       </section>

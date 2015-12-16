@@ -95,7 +95,7 @@
 
 
 										<tr>
-											<td align="left"> DIR </td>
+											<td align="left"><a href="/detail/dir?o={{username_id}}">  DIR </a></td>
 
 											<td align="right" id="td">
                                                 % # DIR
@@ -108,7 +108,7 @@
                                             </td>
 										</tr>
 										<tr>
-										<td align="left"> DIR-INBOX </td>
+										<td align="left"><a href="/detail/dir-inbox?o={{username_id}}"> DIR-INBOX </td>
 
 											<td align="right" id="td">
                                                 % # DIR-INBOX
