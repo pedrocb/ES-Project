@@ -31,8 +31,9 @@
                     <td>
                         &nbsp;&nbsp;
                         % if ticket['kanban_actions']['back']:
-                        <a href="/ticket/{{ticket['id']}}/action/back?o={{username_id}}&email={{email}}">&lt;</a>
-                        % end
+                             <a href="/ticket/{{ticket['id']}}/action/back?o={{username_id}}&email={{email}}">&lt;</a>
+                         %end
+
                         % if ticket['kanban_actions']['interrupted']:
                         <a href="/ticket/{{ticket['id']}}/action/interrupted?o={{username_id}}&email={{email}}">/</a>
                         % end

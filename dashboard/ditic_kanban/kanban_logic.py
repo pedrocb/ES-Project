@@ -44,13 +44,7 @@ def create_ticket_possible_actions(config, ticket, email, number_tickets_per_sta
         summary = ditic_kanban.rt_summary.get_summary_info()
         actions['increase_priority'] = True
         actions['decrease_priority'] = True
-        sum = 0
-        for status in summary['dir-inbox']:
-          sum += summary['dir-inbox'][status]
-        if sum < 7:
-            actions['forward'] = False
-        else:
-            actions['forward'] = True
+        actions['forward'] = True
 
 
     # If we are at IN (new), then we can move back or forward
