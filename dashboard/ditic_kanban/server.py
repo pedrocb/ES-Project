@@ -404,6 +404,7 @@ def ticket_action_aux(ticket_id, action):
 
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
     result.update({'summary:': get_summary_info()})
+    result.update({'dir_inbox_limit':my_config.get_dir_inbox_limit()})
 
     if request.query.email == 'dir' or request.query.email == 'dir-inbox' or request.query.email == 'unknown':
         return template('ticket_list', result)
