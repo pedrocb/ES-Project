@@ -179,7 +179,7 @@ def create_ticket():
             'id': 'ticket/new',
             'Owner': 'nobody',
             'Text': text,
-            'Priority': request.forms.get("priority"),
+            'Priority': my_config.get_initial_priority(),
             'Subject': request.forms.get('subject'),
             'Queue': 'General',
             'CF-IS - Informatica e Sistemas': 'DIR',
