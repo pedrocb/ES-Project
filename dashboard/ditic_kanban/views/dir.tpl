@@ -22,9 +22,9 @@
                                                 <input type="submit" value="Create Ticket">
                                                 </form>
                                             <li>
-                                            <li><a href= "" class="button disabled " > DIR </a>
+                                            <li><div class="button disabled " > DIR </div>
                                             <li>
-                                            <li><a href="dir-inbox.html"  class="button disabled " >DIR-INBOX </a>
+                                            <li><a href="/detail/dir-inbox?o={{username_id}}"  class="button" >DIR-INBOX </a>
                                             <li>
                                             </ul>
                                             </div>
