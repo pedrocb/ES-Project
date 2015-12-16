@@ -1,6 +1,7 @@
 % rebase('skin')
 <html>
-   <head>
+
+<head>
       <title>Dir</title>
    </head>
    <body>
@@ -69,7 +70,7 @@
                                                         % for status in summary['dir-inbox']:
                                                         %   sum += summary['dir-inbox'][status]
                                                         % end
-                                                        %if sum < 7:
+                                                        %if sum < dir_inbox_limit:
                                                           <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">Move to Dir-Inbox</a>
                                                         %end
                                                         <label for="copy"></label>

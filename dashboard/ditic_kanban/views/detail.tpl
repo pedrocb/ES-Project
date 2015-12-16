@@ -66,7 +66,7 @@
             % for status in summary['dir-inbox']:
             %   sum += summary['dir-inbox'][status]
             % end
-            %if sum < 7:
+            %if sum < dir_inbox_limit:
                   % if ticket['kanban_actions']['back']:
                     <a href="/ticket/{{ticket['id']}}/action/back?o={{username_id}}&email={{email}}">&lt;</a>
                   % end

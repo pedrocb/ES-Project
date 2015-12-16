@@ -102,6 +102,8 @@ class DITICConfig:
         ]
 
         self.initial_priority = 100
+
+        self.dir_inbox_limit = 7
         
         self.system = {
             'working_dir': '/home/user/ES-Project/dashboard/ditic_kanban',
@@ -112,6 +114,9 @@ class DITICConfig:
             'statistics_file': 'statistics',
         }
 
+    def get_dir_inbox_limit(self):
+        return self.dir_inbox_limit
+        
     def get_initial_priority(self):
         return self.initial_priority
  
