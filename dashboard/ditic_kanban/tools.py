@@ -329,7 +329,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
             rt_object,
             ticket_id,
             {
-                'cf.{DITIC-Urgent}': '',
+                'cf.{DITIC-Urgent}': 'no',
             }
         )
 

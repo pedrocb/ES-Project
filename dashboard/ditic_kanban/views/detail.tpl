@@ -61,9 +61,17 @@
             {{priority}}<br>
             % for ticket in tickets[status][priority]:
             &nbsp;&nbsp;
-            % if ticket['kanban_actions']['back']:
-            <a href="/ticket/{{ticket['id']}}/action/back?o={{username_id}}&email={{email}}">&lt;</a>
+            % sum = 0
+            % # we need this code because DIR can have tickets all along several status
+            % for status in summary['dir-inbox']:
+            %   sum += summary['dir-inbox'][status]
             % end
+            %if sum < 7:
+                  % if ticket['kanban_actions']['back']:
+                    <a href="/ticket/{{ticket['id']}}/action/back?o={{username_id}}&email={{email}}">&lt;</a>
+                  % end
+            %end
+
             % if ticket['kanban_actions']['interrupted']:
             <a href="/ticket/{{ticket['id']}}/action/interrupted?o={{username_id}}&email={{email}}">/</a>
             % end

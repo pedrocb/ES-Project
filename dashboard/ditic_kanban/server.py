@@ -24,7 +24,7 @@ from ditic_kanban.tools import ticket_actions
 from ditic_kanban.tools import user_closed_tickets
 from ditic_kanban.tools import search_tickets
 from ditic_kanban.tools import get_urgent_tickets
-from ditic_kanban.rt_api import RTApi
+from ditic_kanban.rt_api import RTApi, modify_ticket
 from ditic_kanban.statistics import get_date
 from ditic_kanban.statistics import get_statistics
 from subprocess import call
@@ -171,12 +171,19 @@ def createTemplate():
 @post('/ticket/new')
 def create_ticket():
     print "create ticket: ", request.query.o
-    print "email: " ,user_auth.get_email_from_id(request.query.o)
+    email = user_auth.get_email_from_id(request.query.o)
+    urgentForm = request.forms.get("urgent")
+    print "urgent form: " , urgentForm
     if not request.query.o:
         redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
     else:
         text = "".join([s for s in request.forms.get("description").splitlines(True) if s.strip("\r\n")])
         text = text.replace("\n","\n ")
+
+        if urgentForm=='off':
+            urgent="no"
+        elif urgentForm=='on':
+            urgent="yes"
 
         create_ticket = {
             'id': 'ticket/new',
@@ -186,6 +193,8 @@ def create_ticket():
             'Subject': request.forms.get('subject'),
             'Queue': 'General',
             'CF-IS - Informatica e Sistemas': 'DIR',
+            'CF.{DITIC - Interrupted}': '',
+            'CF.{DITIC - Urgent}': urgent,
         }
 
         content = ''
@@ -195,9 +204,12 @@ def create_ticket():
         query = {
             'content': content
         }
-        rt_object.get_data_from_rest('ticket/new', query)
-        print "sucesso"
+
+
+        user_auth.get_rt_object_from_email(user_auth.get_email_from_id(request.query.o)).get_data_from_rest('ticket/new', query)
+
         redirect('/?o=%s' % request.query.o)
+
 
 @get('/ticket/<ticket_id>/commentTemplate')
 def comment_template(ticket_id):
