@@ -100,8 +100,11 @@ class DITICConfig:
             'rejected',
             'deleted',
         ]
+
+        self.initial_priority = 100
+        
         self.system = {
-            'working_dir': '/home/godinho/Documents/ES-Git/ES-Project/dashboard/ditic_kanban/',
+            'working_dir': '/home/user/ES-Project/dashboard/ditic_kanban',
             'summary_file': 'summary',
             'server': 'localhost:4200',
             'username': 'root',
@@ -109,6 +112,9 @@ class DITICConfig:
             'statistics_file': 'statistics',
         }
 
+    def get_initial_priority(self):
+        return self.initial_priority
+ 
     def get_email_to_user(self):
         return self.email_to_user
 
