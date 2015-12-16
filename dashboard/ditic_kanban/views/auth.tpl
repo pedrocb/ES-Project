@@ -15,22 +15,6 @@
 	</head>
 	<body class="landing">
 
-		<!-- Header -->
-			<header id="header" class="alt">
-				<a href="#nav">Menu</a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li><a href="index.html">LOGIN</a></li>
-					<li><a href="kanban.html">KANBAN</a></li>
-					<li><a href="dir.html">DIR</a></li>
-                    <li><a href="dir-inbox.html">DIR-INBOX</a></li>
-                    <li><a href="user.html">USER</a></li>
-				</ul>
-			</nav>
-
 			% if message != '':
 			Result: <strong>{{message}}</strong>
 			% end
