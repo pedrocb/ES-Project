@@ -4,6 +4,7 @@
 # By Pedro Vapi @2015
 # Kanban Logic for the GSIIC-DITIC environment
 #
+import ditic_kanban.rt_summary
 
 
 def create_ticket_possible_actions(config, ticket, email, number_tickets_per_status):
@@ -40,12 +41,10 @@ def create_ticket_possible_actions(config, ticket, email, number_tickets_per_sta
 
     # DIR is very special...
     elif email == 'dir':
+        summary = ditic_kanban.rt_summary.get_summary_info()
         actions['increase_priority'] = True
         actions['decrease_priority'] = True
-        if number_tickets_per_status < 7:
-            actions['forward'] = False
-        else:
-            actions['forward'] = True
+        actions['forward'] = True
 
 
     # If we are at IN (new), then we can move back or forward
