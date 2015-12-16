@@ -1,6 +1,5 @@
 % rebase('skin')
 
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -26,11 +25,8 @@
 
 									</div>
                             </div>
-                               </div>
-
-
-
-                            <div>
+                                </div>
+                                    <div>
 									<div class="12u$">
 										<ul class="actions">
 
@@ -39,13 +35,9 @@
 										</ul>
 									</div>
 								</div>
-
+                            </form>
+                        </header>
+                    </div>
 </section>
-
-
-
-
-
-
 </body>
 </html>
