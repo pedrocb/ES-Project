@@ -137,6 +137,9 @@ def email_detail(email):
     result.update({'time_spent': '%0.2f seconds' % (time() - start_time)})
 
     result.update({'summary:': get_summary_info()})
+
+    result.update({'dir_inbox_limit': my_config.get_dir_inbox_limit()})
+
     if email=='dir':
         print email
         return template('dir', result)
