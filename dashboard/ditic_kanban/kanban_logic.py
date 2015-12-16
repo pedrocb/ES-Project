@@ -42,6 +42,7 @@ def create_ticket_possible_actions(config, ticket, email, number_tickets_per_sta
     elif email == 'dir':
         actions['increase_priority'] = True
         actions['decrease_priority'] = True
+        print number_tickets_per_status
         if number_tickets_per_status < 7:
             actions['forward'] = False
         else:
