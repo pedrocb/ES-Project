@@ -92,8 +92,6 @@
 </section>
 
                         <table id ="tabela">
-
-
 										<tr>
 											<td align="left"><a href="/detail/dir?o={{username_id}}">  DIR </a></td>
 
@@ -105,8 +103,7 @@
                                                 %   sum += summary['dir'][status]
                                                 % end
                                                 <td align="center" valign="top">{{sum}}</td>
-                                            </td>
-										</tr>
+                                        </tr>
 										<tr>
 										<td align="left"><a href="/detail/dir-inbox?o={{username_id}}"> DIR-INBOX </td>
 
@@ -118,13 +115,12 @@
                                                 %   sum += summary['dir-inbox'][status]
                                                 % end
                                                  <td align="center" valign="top">{{sum}}</td>
-                                            </td>
-										</tr>
+                                        </tr>
 
 								</table>
-<br> </br>
+<br>
 
-                                    <table id="tabela">
+<table id="tabela">
                                         <thead>
                                             <tr>
                                                 <th>USER</th>
@@ -170,3 +166,25 @@
         <div id="mean_time_to_resolve" style="width: 400px; height: 400px"></div>
     </td>
 </table>
+
+% urgent = get('urgent', '')
+            % if urgent:
+<table border="1">
+                <td align="center">
+                    URGENT<br>
+                    <br>
+                    % for ticket_info in urgent:
+                    % print "ticket_info: " , ticket_info
+                      <audio autoplay="autoplay">
+                         <source src="/static/alert1.mp3" />
+                      </audio>
+                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket_info['id']}}">
+                            {{ticket_info['subject']}}
+                        </a>
+                        % if username:
+                        <a href="/ticket/{{ticket_info['id']}}/action/take?o={{username_id}}&email={{email}}">(take)</a>
+                        % end
+                    % end
+                </td>
+            </table>
+%end

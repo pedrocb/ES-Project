@@ -179,7 +179,7 @@ def create_ticket():
     else:
         text = "".join([s for s in request.forms.get("description").splitlines(True) if s.strip("\r\n")])
         text = text.replace("\n","\n ")
-
+        urgent = ""
         if urgentForm=='off':
             urgent="no"
         elif urgentForm=='on':
