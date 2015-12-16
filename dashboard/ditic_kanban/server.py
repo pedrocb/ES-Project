@@ -169,12 +169,12 @@ def createTemplate():
 def create_ticket():
     print "create ticket: ", request.query.o
     print "email: " ,user_auth.get_email_from_id(request.query.o)
+    print "urgent: ", request.forms.get("urgent")
     if not request.query.o:
         redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
     else:
         text = "".join([s for s in request.forms.get("description").splitlines(True) if s.strip("\r\n")])
         text = text.replace("\n","\n ")
-
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
