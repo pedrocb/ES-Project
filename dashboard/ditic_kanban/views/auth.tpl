@@ -26,18 +26,18 @@
 				<div class="inner">
 					<header class="major narrow">
 						<h2>LOGIN</h2>
-						
+
 					</header>
 					<form action="/auth" method="post">
-						<div class="container 75%">
+						<div class="container 50%">
 
 							<div class="row uniform 50%">
-								<div class=" 13u$">
+								<div class=" 12u$">
                                 
 									<input name="username" placeholder="Username" type="text" />
 								</div>
 								
-								<div class="13u$">
+								<div class="12u$">
 									<input name="password" placeholder="Password" type="password"/>
 								</div>
 							</div>

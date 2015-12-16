@@ -277,7 +277,6 @@ def getTicketDoneComment(ticket_id):
 
 def getTicketHistory(ticket_id):
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/history?format=l', {})
-
     return response
 
 def getTicketDescription(ticket_id):
