@@ -83,7 +83,9 @@
 
                                         </tbody>
                                     </table>
-
+                                HISTORY
+                                %for line in history:
+                                       {{ line }}
                         <div/>
 
 
@@ -91,7 +93,10 @@
                             </div>
                                 </div>
                             </div>
+                            </div>
                                 </form>
+                        </header>
+                    </div>
 						</section>
 
 

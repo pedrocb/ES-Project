@@ -248,8 +248,17 @@ def ticket_detail(ticket_id):
             result.update({first_argument:second_argument})
 
     description = getTicketDescription(ticket_id)
-    result.update({'description':description    })
+    history = getTicketHistory(ticket_id)
+    result.update({'description':description})
+    result.update({'history':history})
+
     return template('ticket_detail', result)
+
+
+
+def getTicketHistory(ticket_id):
+    response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/history?format=l', {})
+    return response
 
 def getTicketDescription(ticket_id):
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/history?format=l', {})
@@ -264,7 +273,6 @@ def getTicketDescription(ticket_id):
         return_value+=("\n" + response[i])
         i+=1
 
-    print return_value
     return return_value
 
 
