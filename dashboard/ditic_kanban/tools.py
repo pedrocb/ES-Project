@@ -373,7 +373,7 @@ def user_closed_tickets(rt_object, email):
     previous_date = (date.today() - timedelta(60)).isoformat()
 
     # The search string
-    query = 'Owner = "%s" AND Queue = "general" AND LastUpdated > "%s"' % (email, previous_date)
+    query = 'Owner = "%s" AND Queue = "general" AND  Status = "resolved" AND LastUpdated > "%s"' % (email, previous_date)
 
     # Get the information from the server.
     try:
