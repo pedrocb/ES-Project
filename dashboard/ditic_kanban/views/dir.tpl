@@ -18,13 +18,11 @@
                                     <div>
                                         <!-- Button to create ticket -->
                                         <ul class="actions">
-                                            <li><form action="/ticket/create?o={{username_id}}&email={{email}}" method="post">
-                                                <input type="submit" value="Create Ticket">
-                                                </form>
                                             <li>
-                                            <li><a href= "" class="button disabled " > DIR </a>
                                             <li>
-                                            <li><a href="dir-inbox.html"  class="button disabled " >DIR-INBOX </a>
+                                            <li><div class="button disabled " > DIR </div>
+                                            <li>
+                                            <li><a href="/detail/dir-inbox?o={{username_id}}"  class="button" >DIR-INBOX </a>
                                             <li>
                                             </ul>
                                             </div>
@@ -82,7 +80,11 @@
          </div>
          <div>
             <ul class="actions">
-               <li ><input type="submit" class="button" value="Send to dir- inbox" /></li>
+               <li >
+                 <form action="/ticket/create?o={{username_id}}&email={{email}}" method="post">
+                   <input type="submit" value="Create Ticket">
+                 </form>
+               </li>
             </ul>
          </div>
       </section>
