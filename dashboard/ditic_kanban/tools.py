@@ -235,17 +235,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                     'timeworked': calculate_time_worked(ticket_line) + ' minutes',
                     'starts': '0',
                     'status': 'new',
-                    'cf.{is - informatica e sistemas}': 'dir-inbox',
-                }
-            )
-        elif ticket_line['status'] == 'resolved':
-            result = modify_ticket(
-                rt_object,
-                ticket_id,
-                {
-                    'starts': ctime(time()),
-                    'status': 'open',
-                    'cf.{is - informatica e sistemas}': 'open',
+                    'cf.{is - informatica e sistemas}': 'in',
                 }
             )
         elif ticket_line['status'] == 'stalled':
@@ -255,6 +245,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'starts': ctime(time()),
                     'status': 'new',
+                    'cf.{is - informatica e sistemas}': 'in',
                 }
             )
 
@@ -275,7 +266,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                 {
                     'starts': ctime(time()),
                     'status': 'open',
-                    'cf.{is - informatica e sistemas}': 'open',
+                    'cf.{is - informatica e sistemas}': 'active',
                 }
             )
         elif ticket_line['status'] == 'open':
@@ -301,6 +292,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
                     'timeworked': calculate_time_worked(ticket_line) + ' minutes',
                     'starts': '0',
                     'status': 'stalled',
+                    'cf.{is - informatica e sistemas}': 'stalled',
                 }
             )
 
@@ -312,6 +304,7 @@ def ticket_actions(rt_object, ticket_id, action, ticket_email, user_email):
             {
                 'owner': user_email,
                 'status': 'new',
+                'cf.{is - informatica e sistemas}': 'in',
             }
         )
 
