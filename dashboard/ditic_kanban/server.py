@@ -179,7 +179,7 @@ def create_ticket():
             'id': 'ticket/new',
             'Owner': 'nobody',
             'Text': text,
-            'Priority': request.forms.get("priority"),
+            'Priority': my_config.get_initial_priority(),
             'Subject': request.forms.get('subject'),
             'Queue': 'General',
             'CF-IS - Informatica e Sistemas': 'DIR',
@@ -236,8 +236,9 @@ def ticket_detail(ticket_id):
 
     result = create_default_result()
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/show', {})
-    available = ['id', 'queue','owner','subject','creator','status','priority','resolved','timeworked','cf.{is - informatica e sistemas}']
+    available = ['id', 'subject','queue','owner','creator','status','priority','resolved','timeworked','cf.{is - informatica e sistemas}', 'created', 'timeworked']
     for line in response:
+        print line
         divided_line = line.split(":")
         if divided_line[0] in available:
             if divided_line[0]!=available[9]:
@@ -245,16 +246,34 @@ def ticket_detail(ticket_id):
                 second_argument = divided_line[1].strip()
             else:
                 first_argument = "cf"
+                second_argument = divided_line[1].strip()
             result.update({first_argument:second_argument})
 
     description = getTicketDescription(ticket_id)
     history = getTicketHistory(ticket_id)
     result.update({'description':description})
+    commentDone = getTicketDoneComment(ticket_id)
+    result.update({'comment':commentDone})
     result.update({'history':history})
 
     return template('ticket_detail', result)
 
 
+def getTicketDoneComment(ticket_id):
+    response = rt_object.get_data_from_rest('ticket/'+ticket_id+'/history?format=l', {})
+    found = ""
+    for i in range (len(response)-1,0, -1):
+        if response[i]=='newvalue: resolved':
+            for a in range(i, 0,-1):
+                if response[a].startswith('content'):
+                    found = response[a]
+                    break
+
+    if found=="":
+        line = "not set"
+    else:
+        line = found.strip().split(':')[1]
+    return line
 
 def getTicketHistory(ticket_id):
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/history?format=l', {})

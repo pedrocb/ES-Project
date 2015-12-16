@@ -67,8 +67,13 @@
                                             <tr>
                                                 <td align="left">RESOLVED</td>
                                                 <td align="right">{{resolved}}</td>
-
                                             </tr>
+
+                                            <tr>
+                                                <td align="left">RESOLVED COMMENT</td>
+                                                <td align="right">{{comment}}</td>
+                                            </tr>
+
                                             <tr>
                                                 <td align="left">TIME WORKED</td>
                                                 <td align="right">{{timeworked}}</td>

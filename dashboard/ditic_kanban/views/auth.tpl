@@ -15,22 +15,6 @@
 	</head>
 	<body class="landing">
 
-		<!-- Header -->
-			<header id="header" class="alt">
-				<a href="#nav">Menu</a>
-			</header>
-
-		<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li><a href="index.html">LOGIN</a></li>
-					<li><a href="kanban.html">KANBAN</a></li>
-					<li><a href="dir.html">DIR</a></li>
-                    <li><a href="dir-inbox.html">DIR-INBOX</a></li>
-                    <li><a href="user.html">USER</a></li>
-				</ul>
-			</nav>
-
 			% if message != '':
 			Result: <strong>{{message}}</strong>
 			% end
@@ -42,18 +26,18 @@
 				<div class="inner">
 					<header class="major narrow">
 						<h2>LOGIN</h2>
-						
+
 					</header>
 					<form action="/auth" method="post">
-						<div class="container 75%">
+						<div class="container 50%">
 
 							<div class="row uniform 50%">
-								<div class=" 13u$">
+								<div class=" 12u$">
                                 
 									<input name="username" placeholder="Username" type="text" />
 								</div>
 								
-								<div class="13u$">
+								<div class="12u$">
 									<input name="password" placeholder="Password" type="password"/>
 								</div>
 							</div>

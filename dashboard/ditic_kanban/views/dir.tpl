@@ -58,7 +58,8 @@
                                                         </a>
                                                         </td>
                                                         <td>
-                                                        {{priority}}
+                                                           <a href="/ticket/{{ticket['id']}}/action/decrease_priority?o={{username_id}}&email={{email}}">-</a>                               {{priority}}
+                                       <a href="/ticket/{{ticket['id']}}/action/increase_priority?o={{username_id}}&email={{email}}">+</a>
                                                         </td>
 
                                                         <td>
