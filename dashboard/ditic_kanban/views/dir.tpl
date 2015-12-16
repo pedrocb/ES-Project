@@ -63,8 +63,14 @@
 
                                                         <td>
                                                         <div class="6u$ 12u$(small)">
-                                                          
-                                        <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">Move to Dir-Inbox</a>
+                                                        % sum = 0
+                                                        % # we need this code because DIR can have tickets all along several status
+                                                        % for status in summary['dir-inbox']:
+                                                        %   sum += summary['dir-inbox'][status]
+                                                        % end
+                                                        %if sum < 7:
+                                                          <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">Move to Dir-Inbox</a>
+                                                        %end
                                                         <label for="copy"></label>
                                                         </div></td>
                                             </tr>

@@ -60,6 +60,7 @@
                             {{ticket['requestors']}}
                         </a>
                     </td>
+
                     <td>
                         <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
                             % subject = ticket['subject']
