@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+
+
+  <head>
 
 	<title>Ticket Description</title>
 	<link rel="stylesheet" href="/static/assets/css/main.css" >
@@ -15,7 +17,7 @@
 				<div class="container">
 					<header class="major special">
 						<h2>TICKET DESCRIPTION</h2>
-
+                                                
 
                            <form action="#" method="POST">
 						<div class="container 50%">
@@ -26,6 +28,10 @@
                                     <table class="tabela2">
 
                                         <tbody>
+                                          <tr
+                                             <td><a href="/ticket/{{ticket_id}}/commentTemplate?o={{username_id}}&email={{email}}">Comment</a></td>
+                                             
+                                             </tr>
                                               <tr>
                                                 <td align="left">ID</td>
                                                 <td align="right">{{id}}</td>
@@ -52,7 +58,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="left">DESCRIPTION</td>
-                                                <td align="right">{{description}}</td>
+                                                <td align="right" style="white-space: pre-line">{{description}}</td>
 
                                             </tr>
                                              <tr>
@@ -84,13 +90,17 @@
                                                 <td align="right">{{cf}}</td>
 
                                             </tr>
+                                            <tr>
+                                              <td align="left">HISTORY</td>
+                                              <td align="right" style="white-space: pre-line">
+                                                %line = "\n".join(history)
+                                                {{ line }}
+                                              </td>
+                                            </tr>
 
 
                                         </tbody>
                                     </table>
-                                HISTORY
-                                %for line in history:
-                                       {{ line }}
                         <div/>
 
 

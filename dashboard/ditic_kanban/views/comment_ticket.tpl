@@ -15,7 +15,7 @@
 					<header class="major special">
 						<h2>COMMENT DONE</h2>
 
-                        <form action="/ticket/{{ticket_id}}/comment?o={{username_id}}&email={{email}}" method="post">
+                        <form action="/ticket/{{ticket_id}}/comment?o={{username_id}}&email={{email}}&move={{move}}" method="post">
 						    <div class="container 50%">
 							    <div class="row uniform 50%">
 								    <div class=" 12u$">
@@ -32,7 +32,7 @@
 										<li><input type="submit" class="button" id="ticket-button" value="Done"></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>      
                         </form>
                     </header>
                 </div>

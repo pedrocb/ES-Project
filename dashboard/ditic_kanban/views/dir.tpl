@@ -50,7 +50,7 @@
                                                         </td>
 
                                                         <td>
-                                                        <a href="/ticket/{{ticket['id']}}/detail" target="_blank">
+                                                        <a href="/ticket/{{ticket['id']}}/detail?o={{username_id}}&email={{email}}" target="_blank">
                                                             % subject = ticket['subject']
                                                             % if len(ticket['subject']) > max_len:
                                                             %   subject = ticket['subject'][:max_len]+'...'

@@ -218,7 +218,10 @@ def comment_template(ticket_id):
     if request.query.o == '' or not user_auth.check_id(request.query.o):
         result.update({'message': ''})
         return template('auth', result)
-
+    if request.query.move:
+        result.update({'move':request.query.move})
+    else:
+        result.update({'move':'false'})
     result.update({'email':email})
     result.update({'username_id': request.query.o})
     result.update({'ticket_id':ticket_id})
@@ -228,28 +231,40 @@ def comment_template(ticket_id):
 
 @post('/ticket/<ticket_id>/comment')
 def ticket_comment(ticket_id):
-        comment = {
-            'id': ticket_id,
-            'Action': 'comment',
-            'Text': request.forms.get('comment'),
-        }
+    comment = {
+        'id': ticket_id,
+        'Action': 'comment',
+        'Text': request.forms.get('comment'),
+    }
 
-        content = ''
-
-        for key in comment:
-            content += '{0}: {1}\n'.format(key, comment[key])
-
-        query = {
-            'content': content
-        }
-        rt_object.get_data_from_rest('ticket/' + ticket_id + '/comment', query)
+    content = ''
+    
+    for key in comment:
+        content += '{0}: {1}\n'.format(key, comment[key])
+    
+    query = {
+        'content': content
+    }
+    print request.query.move
+    rt_object.get_data_from_rest('ticket/' + ticket_id + '/comment', query)
+    if request.query.move == 'true':
         ticket_action(ticket_id, 'forward')
+    else:
+        redirect("/detail/" + emailGlobal + "?o=" + request.query.o)
 
 
 @get('/ticket/<ticket_id>/detail')
 def ticket_detail(ticket_id):
 
     result = create_default_result()
+    if request.query.o == '' or not user_auth.check_id(request.query.o):
+        result.update({'message': ''})
+        return template('auth', result)
+        
+    result.update({'username': user_auth.get_email_from_id(request.query.o)})
+    result.update({'email': request.query.email})
+    result.update({'username_id': request.query.o})
+    
     response = rt_object.get_data_from_rest('ticket/'+ticket_id+ '/show', {})
     available = ['id', 'subject','queue','owner','creator','status','priority','resolved','timeworked','cf.{is - informatica e sistemas}', 'created', 'timeworked']
     for line in response:
@@ -263,14 +278,14 @@ def ticket_detail(ticket_id):
                 first_argument = "cf"
                 second_argument = divided_line[1].strip()
             result.update({first_argument:second_argument})
-
     description = getTicketDescription(ticket_id)
     history = getTicketHistory(ticket_id)
     result.update({'description':description})
     commentDone = getTicketDoneComment(ticket_id)
     result.update({'comment':commentDone})
     result.update({'history':history})
-
+    result.update({'ticket_id':ticket_id})
+    
     return template('ticket_detail', result)
 
 

@@ -87,7 +87,7 @@ TimeWorked: {{ticket['timeworked']}}
 
 
 Requestor: {{ticket['requestors']}}
-Subject: {{ticket['subject']}}" href="/ticket/{{ticket['id']}}/detail" target="_blank">
+Subject: {{ticket['subject']}}" href="/ticket/{{ticket['id']}}/detail?o={{username_id}}&email={{email}}" target="_blank">
                 {{ticket['id']}}
                 % subject = ticket['subject']
                 % if len(ticket['subject']) > max_len:
@@ -108,7 +108,7 @@ Subject: {{ticket['subject']}}" href="/ticket/{{ticket['id']}}/detail" target="_
 
 
              % if ticket['kanban_actions']['forward'] and ticket['status']=='open':
-                 <a href="/ticket/{{ticket['id']}}/commentTemplate?o={{username_id}}&email={{email}}">&gt;</a>
+                 <a href="/ticket/{{ticket['id']}}/commentTemplate?o={{username_id}}&email={{email}}&move=true">&gt;</a>
             %end
 
             <br>
