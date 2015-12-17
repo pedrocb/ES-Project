@@ -29,7 +29,7 @@
 
                                         <tbody>
                                           <tr
-                                             <td><a href="/ticket/{{ticket_id}}/commentTemplate?o={{username_id}}&email={{email}}">Comment</a></td>
+                                             <td><a href="/ticket/{{ticket_id}}/commentTicket?o={{username_id}}&email={{email}}">Comment</a></td>
                                              
                                              </tr>
                                               <tr>

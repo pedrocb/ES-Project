@@ -10,7 +10,8 @@
       <section id="main" class="wrapper">
          <div class="container">
             <header class="major special">
-            <h2>DIR-INBOX</h2>
+
+            <h2>DIR-INBOX ({{dir_inbox_limit}})</h2>
                <div class="container 75%">
                   <div class="row uniform 50%">
                      <div class="12u$">

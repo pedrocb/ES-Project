@@ -228,6 +228,23 @@ def comment_template(ticket_id):
     return template('comment_ticket', result)
 
 
+@get('/ticket/<ticket_id>/commentTicket')
+def comment_template(ticket_id):
+    email = emailGlobal
+    result = create_default_result()
+    if request.query.o == '' or not user_auth.check_id(request.query.o):
+        result.update({'message': ''})
+        return template('auth', result)
+    if request.query.move:
+        result.update({'move':request.query.move})
+    else:
+        result.update({'move':'false'})
+    result.update({'email':email})
+    result.update({'username_id': request.query.o})
+    result.update({'ticket_id':ticket_id})
+    return template('comment', result)
+
+
 
 @post('/ticket/<ticket_id>/comment')
 def ticket_comment(ticket_id):
