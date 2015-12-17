@@ -179,17 +179,20 @@ def create_ticket():
     else:
         text = "".join([s for s in request.forms.get("description").splitlines(True) if s.strip("\r\n")])
         text = text.replace("\n","\n ")
+        priority = my_config.get_initial_priority()
         urgent = ""
         if urgentForm=='off':
             urgent="no"
+
         elif urgentForm=='on':
             urgent="yes"
+            priority = 200
 
         create_ticket = {
             'id': 'ticket/new',
             'Owner': 'nobody',
             'Text': text,
-            'Priority': my_config.get_initial_priority(),
+            'Priority': priority,
             'Subject': request.forms.get('subject'),
             'Queue': 'General',
             'CF-IS - Informatica e Sistemas': 'DIR',

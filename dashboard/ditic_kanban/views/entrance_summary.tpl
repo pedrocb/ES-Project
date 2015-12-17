@@ -158,6 +158,42 @@
                                         </tbody>
                                     </table>
 
+<br>
+% urgent = get('urgent', '')
+            % if urgent:
+<table id="tabela">
+    <thead>
+        <tr>
+            <th>URGENT TICKETS <i class="fa fa-bell fa-lg"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>
+        % for ticket_info in urgent:
+          <audio autoplay="autoplay">
+             <source src="/static/alert1.mp3" />
+          </audio>
+            <a href="/ticket/{{ticket_info['id']}}/detail?o={{username_id}}&email={{email}}" target="_blank">
+                {{ticket_info['subject']}}
+
+            </a>
+            % if username:
+            <a href="/ticket/{{ticket_info['id']}}/action/take?o={{username_id}}&email={{email}}">(take)</a>
+            % end
+        % end
+    </td>
+    </tr>
+    </tbody>
+            </table>
+%end
+
+<br>
+<br>
+
+
+
+
 <table border="0">
     <td>
         <div id="performance" style="width: 400px; height: 400px"></div>
@@ -167,24 +203,3 @@
     </td>
 </table>
 
-% urgent = get('urgent', '')
-Urgente: {{ urgent }}
-            % if urgent:
-<table border="1">
-                <td align="center">
-                    URGENT<br>
-                    <br>
-                    % for ticket_info in urgent:
-                      <audio autoplay="autoplay">
-                         <source src="/static/alert1.mp3" />
-                      </audio>
-                        <a href="https://suporte.uc.pt/Ticket/Display.html?id={{ticket_info['id']}}">
-                            {{ticket_info['subject']}}
-                        </a>
-                        % if username:
-                        <a href="/ticket/{{ticket_info['id']}}/action/take?o={{username_id}}&email={{email}}">(take)</a>
-                        % end
-                    % end
-                </td>
-            </table>
-%end
