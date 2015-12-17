@@ -73,7 +73,7 @@
                                                         %if sum < dir_inbox_limit:
                                                           <a href="/ticket/{{ticket['id']}}/action/forward?o={{username_id}}&email={{email}}">Move to Dir-Inbox</a>
                                                         %end
-                                                        %else:
+                                                        %if sum >= dir_inbox_limit:
                                                             DIR-INBOX FULL
                                                         %end
                                                         <label for="copy"></label>
