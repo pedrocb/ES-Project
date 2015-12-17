@@ -186,7 +186,6 @@ def create_ticket():
 
         elif urgentForm=='on':
             urgent="yes"
-            priority = 200
 
         create_ticket = {
             'id': 'ticket/new',
