@@ -495,7 +495,7 @@ def get_urgent_tickets(rt_object):
     :param rt_object:
     :return:
     """
-    query = '"cf.{is - informatica e sistemas}" = "dir-inbox" AND "cf.{ditic-urgent}" = "yes"' \
+    query = '"cf.{is - informatica e sistemas}" = "dir-inbox" AND "cf.{ditic - urgent}" = "yes"' \
             'AND Owner = "nobody"'
 
     # Get the information from the server.

@@ -168,13 +168,13 @@
 </table>
 
 % urgent = get('urgent', '')
+Urgente: {{ urgent }}
             % if urgent:
 <table border="1">
                 <td align="center">
                     URGENT<br>
                     <br>
                     % for ticket_info in urgent:
-                    % print "ticket_info: " , ticket_info
                       <audio autoplay="autoplay">
                          <source src="/static/alert1.mp3" />
                       </audio>
